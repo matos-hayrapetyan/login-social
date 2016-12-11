@@ -105,9 +105,11 @@ hg_login = {
 };
 
 jQuery("document").ready(function(){
-    var actionCookie = hgLoginGetCookie( 'hg_login_action' );
+    var actionCookie = hgLoginGetCookie( 'hg_login_action' ),
+        body = jQuery('body');
     if( typeof actionCookie !== 'undefined' ){
         hgLoginDeleteCookie('hg_login_action');
+
         switch(actionCookie){
             case "user_activated":
 
@@ -130,7 +132,7 @@ jQuery("document").ready(function(){
 
                 if(typeof login !== 'undefined'){
 
-                    new hgLoginPopupResetPassword(login,jQuery('body'));
+                    new hgLoginPopupResetPassword(login, body);
                 }
 
                 break;
@@ -166,7 +168,12 @@ jQuery("document").ready(function(){
                 break;
             case 'open_login_popup':
 
-                new hgLoginPopupLogin( jQuery("body") );
+                new hgLoginPopupLogin(body);
+
+                break;
+            case 'open_forgotpass_popup':
+
+                new hgLoginPopupForgotPass(body);
 
                 break;
         }
@@ -176,19 +183,19 @@ jQuery("document").ready(function(){
      * This is not a very good solution, but jQuery does not give us any chance to do such things in more optimized way,
      * so we shall wait until custom elements work on all browsers and start working with prototypes
      */
-   jQuery("body").on("click",".hg_login_open_signup_button",function(e){
+    body.on("click",".hg_login_open_signup_button",function(e){
        if(e.button == 0){
            new hgLoginPopupSignup( jQuery(this).parent() );
        }
    });
 
-    jQuery("body").on("click",".hg_login_open_login_button",function(e){
+    body.on("click",".hg_login_open_login_button",function(e){
         if(e.button == 0){
             new hgLoginPopupLogin( jQuery(this).parent() );
         }
     });
 
-    jQuery("body").on("click",".hg-login-button-logout",function(){
+    body.on("click",".hg-login-button-logout",function(){
         hg_login.doLogout();
         return false;
     });

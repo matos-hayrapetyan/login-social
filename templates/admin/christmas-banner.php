@@ -1,7 +1,7 @@
 <div class="backend-christmas-banner" <?php if(isset($_COOKIE['HgLoginChristmasBannerShow']) && $_COOKIE['HgLoginChristmasBannerShow'] == 'no') echo "style='display:none';"?>>
     <div class="banner-block">
         <div class="image-block">
-            <a href="http://huge-it.com/"></a>
+            <a href="http://huge-it.com/" target="_blank"></a>
         </div>
         <div class="text-block">
             <a href="http://huge-it.com/" target="_blank">

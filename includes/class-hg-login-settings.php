@@ -15,11 +15,11 @@ class HG_Login_Settings extends WPDEV_Settings_API {
      */
     public function __construct(){
         $config = array(
-            'menu_slug' => 'hg_login',
+            'menu_slug' => 'hg_login_settings',
             'page_title' => __( 'Settings', 'hg_login' ),
             'title' => __('Login WP Settings','hg_login'),
-            'menu_title'=> __( 'Login WP', 'hg_login' ),
-            'subtitle' => __('Settings','hg_login'),
+            'menu_title'=> __( 'Settings', 'hg_login' ),
+            'parent_slug' => 'hg_login'
         );
 
         $this->init();

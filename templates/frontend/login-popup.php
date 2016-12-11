@@ -39,11 +39,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <span></span>
                                 <i></i>
                             </div>
-                            <div class="hg-login-modal-input">
-                                <input type="checkbox" name="rememberme" id="hg-login-modal-rememberme" value="true" />
-                                <label for="hg-login-modal-rememberme"><span></span><?php _e( "Remember me", 'hg_login' ); ?></label>
+                            <div class="--flex -justify-between">
+                                <div class="hg-login-modal-input -inline-flex">
+                                    <input type="checkbox" name="rememberme" id="hg-login-modal-rememberme"
+                                           value="true"/>
+                                    <label
+                                        for="hg-login-modal-rememberme"><span></span><?php _e("Remember me", 'hg_login'); ?>
+                                    </label>
+                                </div>
+                                <span class="modal-auth--forgot-password"><?php _e('Forgot Password', 'hg_login'); ?></span>
                             </div>
-                            <span class="modal-auth--forgot-password">Forgot Password</span>
                         </div>
                         <?php if(HG_Login()->settings->recaptcha_enabled === 'yes'): ?>
                         <div class="hg-login-modal-recaptcha-wrap">

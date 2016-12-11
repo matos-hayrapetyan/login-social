@@ -36,6 +36,13 @@ class HG_Login_Admin_Assets {
 
 
         }
+
+        if( $hook === HG_Login()->admin->pages['dashboard'] ){
+            wp_enqueue_style('hg-login-admin', HG_Login()->plugin_url().'/assets/css/admin.css');
+            wp_enqueue_style('hg-login-dashboard', HG_Login()->plugin_url().'/assets/css/dashboard.css');
+            wp_enqueue_style('animate-css', HG_Login()->plugin_url().'/vendor/animate-css/animate.css');
+            wp_enqueue_style('open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+        }
     }
 }
 return new HG_Login_Admin_Assets();

@@ -1,12 +1,12 @@
 <?php
 /**
  * Signup Button Template
+ *
+ * @var $text string
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
-$text = isset( $atts['text'] ) ? $atts['text'] : __( 'Signup', 'hg_login' );
 
 do_action( "hg_login_before_signup_button_wrapper" ); ?>
 
@@ -25,4 +25,5 @@ do_action( "hg_login_before_signup_button_wrapper" ); ?>
 
 	</div>
 
-<?php do_action( "hg_login_after_signup_button_wrapper" ); ?>
+<?php
+do_action( "hg_login_after_signup_button_wrapper" );

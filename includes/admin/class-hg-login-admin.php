@@ -25,8 +25,11 @@ class hg_login_Admin {
     public function __construct(){
         $this->init();
         add_action('admin_menu',array($this,'admin_menu'));
+        add_action( 'wpdev_settings_hg_login_admin_menu', array( $this, 'admin_menu_after_settings' ) );
         add_action( 'wpdev_settings_hg_login_header', array( $this, 'print_banners' ) );
         add_action( 'hg_login_featured_plugins_header', array( $this, 'print_banners' ) );
+        add_action( 'hg_login_dashboard_head', array( $this, 'print_banners' ) );
+
     }
 
     /**
@@ -40,31 +43,15 @@ class hg_login_Admin {
      * Creates Admin Menu Pages
      */
     public function admin_menu(){
-        $this->pages['featured-plugins'] =add_submenu_page( 'hg_login', __( 'Featured Plugins', 'hg_login' ), __( 'Featured Plugins', 'hg_login' ), 'manage_options', 'hg_login_featured_plugins', array( hg_login()->admin->featured_plugins,'init_admin' ) );
-
-        foreach($this->pages as $page){
-            add_action('load-'.$page, array( $this, 'help_tabs' ) );
-        }
+        $this->pages['main_page'] = add_menu_page( __( 'Login WP', 'hg_login' ),  __( 'Login WP', 'hg_login' ), 'manage_options', 'hg_login', '', HG_LOGIN_IMAGES_URL."/avatar.svg" );
+        $this->pages['dashboard'] = add_submenu_page('hg_login', __('Login WP Dashboard', 'hg_login'), 'Dashboard', 'manage_options', 'hg_login', array($this, 'init_dashboard'));
     }
 
-    public function help_tabs(){
-        get_current_screen()->add_help_tab( array(
-            'id'		=> 'overview',
-            'title'		=> __('Overview'),
-            'content'	=>
-                '<p>' . __('This is Login WP Plugin Settings Page.') . '</p>'
-        ) );
-        get_current_screen()->add_help_tab( array(
-            'id'		=> 'usage',
-            'title'		=> __('Usage'),
-            'content'	=>
-                '<p>' . __('This is Login WP Plugin Usage.') . '</p>'
-        ) );
-        get_current_screen()->set_help_sidebar(
-            '<p><strong>' . __('For more information:') . '</strong></p>' .
-            '<p>' . __('<a href="https://codex.wordpress.org/Posts_Screen" target="_blank">FAQ</a>') . '</p>' .
-            '<p>' . __('<a href="https://wordpress.org/support/" target="_blank">User Manual</a>') . '</p>'
-        );
+    /**
+     * Creates Admin Menu Pages after the settings page is created by WPDEV_Settings_API
+     */
+    public function admin_menu_after_settings(){
+        $this->pages['featured-plugins'] = add_submenu_page('hg_login', __('Featured Plugins', 'hg_login'), __('Featured Plugins', 'hg_login'), 'manage_options', 'hg_login_featured_plugins', array(HG_Login()->admin->featured_plugins, 'init_admin'));
     }
 
     /**
@@ -73,6 +60,13 @@ class hg_login_Admin {
     public function print_banners(){
         HG_Login_Template_Loader::get_template('admin/free-banner.php');
         HG_Login_Template_Loader::get_template('admin/christmas-banner.php');
+    }
+
+    /**
+     * Initialize dashboard page
+     */
+    public function init_dashboard(){
+        HG_Login_Template_Loader::get_template('admin/dashboard.php');
     }
 
 

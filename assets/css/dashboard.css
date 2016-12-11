@@ -1,0 +1,75 @@
+.hg-mui-cluster {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-flow: row wrap;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+}
+
+.hg-mui-card {
+    max-width: 500px;
+    margin: 10px 20px 5px 0;
+    padding: 15px;
+    background-color: #1bb1e4;
+    box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    color: #fff;
+}
+
+.hg-mui-card:nth-child(2){animation-delay: 0.3s;}
+.hg-mui-card:nth-child(3){animation-delay: 0.6s;  }
+
+.hg-mui-card * {
+    color: #fff;
+}
+
+.hg-mui-card.blue {background-color: #0073ff;}
+.hg-mui-card.purple {background-color: #e54c85;}
+.hg-mui-card.indigo {background-color: #3F51B5;}
+
+
+.hg-mui-card-wrap {
+    display: flex;
+    height: 100%;
+}
+
+.hg-mui-card-title {
+    font-size: 1.5rem;
+}
+
+.hg-mui-card-content,
+.hg-mui-card-content * {
+    font-size: 0.9rem;
+}
+
+.hg-mui-card-content p {
+    margin: 0.5em 0;
+}
+
+.hg-mui-card-img-block {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.hg-mui-card .-button,
+.hg-mui-card .-button:link,
+.hg-mui-card .-button:visited {
+    display: inline-block;
+    padding: 0 15px;
+    height: 35px;
+    color:#fff;
+    line-height: 35px;
+    font-weight: 600;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    background: transparent;
+    text-decoration: none;
+    transition: background-color .15s linear;
+}
+
+.hg-mui-card .-button:hover {
+    background-color: rgba(255,255,255,.3)
+}

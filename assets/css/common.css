@@ -9,7 +9,6 @@
     fill: currentColor;
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
-    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     height: 24px;
@@ -20,6 +19,18 @@
 
 .-inline-block {
     display:inline-block;
+}
+
+.-inline-flex {
+    display:inline-flex;
+}
+
+.-align-stretch {
+    align-items: stretch;
+}
+
+.-justify-between {
+    justify-content: space-between;
 }
 
 .center-center {
@@ -71,6 +82,10 @@
 
 .bold {
     font-weight: bold;
+}
+
+.--flex {
+    display: flex;
 }
 
 .-flex {
@@ -152,7 +167,7 @@
     border-radius: 3px;
     cursor: pointer;
     padding: 0 50px;
-    margin: 15px auto 25px;
+    margin: 15px auto 5px;
 }
 
 .-button.-view-flat.-type-primary:hover {
@@ -351,7 +366,8 @@
     font-family: "Roboto", sans-serif;
     font-size: 18px !important;
     letter-spacing: 0;
-    margin: 0;
+    margin: 0 !important;
+    line-height: 42px !important;
 }
 
 .hg-login-modal-subtitle {
@@ -367,7 +383,7 @@
 }
 
 .hg-login-modal-body {
-    padding: 20px;
+    padding: 10px 20px;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
@@ -785,7 +801,7 @@
 }
 
 #hg_login_popup_info_temp.-success {
-     background: #4CAF50;
+    background: #4CAF50;
 }
 
 #hg_login_popup_info_temp.-notice {
@@ -843,7 +859,8 @@
     font-size: 11px;
     letter-spacing: 0.3px;
     margin-top: 16px;
-    display:inline-block;
+    display:inline-flex;
+    line-height: 40px;
 }
 
 .hg-login-account-menu {

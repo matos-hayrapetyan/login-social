@@ -1,13 +1,14 @@
 <?php
 /**
  * Login Button Template
+ *
+ * @var $text string
  */
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-$text = isset( $atts['text'] ) ? $atts['text'] : __( 'Login', 'hg_login' );
-?>
-<?php do_action("hg_login_before_login_button_wrapper"); ?>
+
+do_action("hg_login_before_login_button_wrapper"); ?>
 <div class="hg_login_button_wrapper -inline-block">
     <?php do_action("hg_login_before_login_button"); ?>
 
@@ -15,4 +16,5 @@ $text = isset( $atts['text'] ) ? $atts['text'] : __( 'Login', 'hg_login' );
 
     <?php do_action("hg_login_after_login_button"); ?>
 </div>
-<?php do_action("hg_login_after_login_button_wrapper"); ?>
+<?php
+do_action("hg_login_after_login_button_wrapper");

@@ -186,11 +186,11 @@ if ( ! class_exists( 'HG_Login' ) ) :
             // Before init action.
             do_action( 'before_hg_login_init' );
 
-            $this->settings = new HG_Login_Settings();
-
             if ( $this->is_request( 'admin' ) ) {
                 $this->admin = new hg_login_Admin();
             }
+
+            $this->settings = new HG_Login_Settings();
 
             add_action( 'widgets_init', array($this,'register_widgets') );
             add_filter( 'bp_core_signup_send_activation_key', array( $this, 'bp_core_signup_send_activation_key' ) );

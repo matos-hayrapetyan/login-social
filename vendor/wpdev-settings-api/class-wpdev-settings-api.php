@@ -206,6 +206,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
             }else{
                 $this->page_hook['submenu'] = add_submenu_page( $this->parent_slug, $this->page_title, $this->menu_title, $this->capability, $this->menu_slug, array( $this, 'init_admin' ) );
             }
+            do_action( 'wpdev_settings_'.$this->plugin_id.'_admin_menu' );
         }
 
         /**

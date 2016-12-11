@@ -93,6 +93,11 @@ function hgLoginPopupSignup( wrap ){
             newsletter = _this.newsletterInput.is(":checked");
         }
 
+        if (!_this.checkValidLoginFormat(login)) {
+            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!');
+            valid = false;
+        }
+
         if( pass == "" ){
             _this.isInvalid( _this.passInput, hgSignupPopupL10n.requiredField );
             valid = false;
@@ -300,6 +305,13 @@ function hgLoginPopupSignup( wrap ){
         }
 
         el.siblings("label").append("<sup class='" + html_class + "'> &#42; "+message+"</sup>");
+    };
+
+    _this.checkValidLoginFormat = function (login) {
+        var reg = new RegExp('/^[a-z0-9]+$/i');
+
+        return login.match(reg, login);
+
     };
 
     _this.checkValidLogin = function( login ){

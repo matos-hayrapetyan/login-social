@@ -11,6 +11,11 @@ function hg_login_maybe_redirect_from_loginscreen(){
         if( !is_user_logged_in() ){
             setcookie( 'hg_login_action', 'open_login_popup');
         }
+
+        if (isset($_GET['key']) && $_GET['key'] === 'lostpassword') {
+            setcookie('hg_login_action', 'open_forgotpass_popup');
+        }
+
         $redirect_to = apply_filters( 'hg_login_redirect_to_from_loginscreen', home_url() );
         wp_redirect( $redirect_to );
         exit();
@@ -69,19 +74,14 @@ function hg_login_get_account_menu(){
 }
 
 function hg_login_current_user_dropdown_menu(){
-    $user_id      = get_current_user_id();
-    $current_user = wp_get_current_user();
-
     $menu_items = HG_Login()->settings->account_dropdown_menu;
 
     if( is_array( $menu_items ) && !empty($menu_items) ){
-        HG_Login_Template_Loader::get_template('frontend/account-dropdown-menu.php');
+        HG_Login_Template_Loader::get_template('frontend/account-dropdown-menu.php', array( 'menu_items' => $menu_items ));
     }
 }
 
 function hg_login_get_default_acc_dropdown_menu(){
-    $user_id      = get_current_user_id();
-
     $default_menu = array(
         'titles' => array(
             0 => __('My account','hg_login'),
