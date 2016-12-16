@@ -207,7 +207,7 @@ class HG_Login_Settings extends WPDEV_Settings_API {
             ),
             'recaptcha_options' => array(
                 'panel' => 'security',
-                'title' => __( 'Recpatcha', 'hg_login' ),
+                'title' => __( 'reCaptcha', 'hg_login' ),
                 'disabled' => true,
                 'disabled_description' => __('This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
                 'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
@@ -617,13 +617,13 @@ class HG_Login_Settings extends WPDEV_Settings_API {
                 'section' => 'recaptcha_options',
                 'type' => 'checkbox',
                 'default' => $this->recaptcha_enabled,
-                'label' => __( 'Enable Recaptcha', 'hg_login' )
+                'label' => __( 'Enable reCaptcha', 'hg_login' )
             ),
             'recaptcha_key' => array(
                 'section' => 'recaptcha_options',
                 'type' => 'text',
                 'default' => $this->recaptcha_key,
-                'label' => __( 'Your Recaptcha key', 'hg_login' ),
+                'label' => __( 'Your reCaptcha key', 'hg_login' ),
                 'description' =>  sprintf( '<a href="https://www.google.com/recaptcha/admin" target="_blank">%s</a>', __( 'Get your recaptcha key', 'hg_login' ) ),
                 'help' => __( 'This key is needed to display the recaptcha widget', 'hg_login' )
             ),
@@ -631,14 +631,14 @@ class HG_Login_Settings extends WPDEV_Settings_API {
                 'section' => 'recaptcha_options',
                 'type' => 'text',
                 'default' => $this->recaptcha_secret_key,
-                'label' => __( 'Your Recaptcha Secret key', 'hg_login' ),
+                'label' => __( 'Your reCaptcha Secret key', 'hg_login' ),
                 'help' => __( 'This key is needed for communications between your site and Google', 'hg_login' )
             ),
             'recaptcha_theme' => array(
                 'section' => 'recaptcha_options',
                 'type' => 'select',
                 'default' => $this->recaptcha_theme,
-                'label' => __( 'Recaptcha theme', 'hg_login' ),
+                'label' => __( 'reCaptcha theme', 'hg_login' ),
                 'choices' => array(
                     'light' => __( 'Light', 'hg_login' ),
                     'dark' => __( 'Dark', 'hg_login' )

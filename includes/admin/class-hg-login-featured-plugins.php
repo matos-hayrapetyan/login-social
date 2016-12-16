@@ -15,6 +15,5 @@ class hg_login_Featured_Plugins extends WPDEV_Settings_API {
 
     public function display(){
         HG_Login_Template_Loader::get_template('admin/featured-plugins.php');
-        require( HG_LOGIN_TEMPLATES_PATH.'admin/featured-plugins.php' );
     }
 }

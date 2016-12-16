@@ -29,6 +29,15 @@ class HG_Login_Admin_Assets {
      * @param $hook string
      */
     public function admin_styles( $hook ){
+
+        /**
+         * Common css for admin
+         */
+        wp_enqueue_style('hg-login-admin-common', HG_Login()->plugin_url() . '/assets/css/admin-common.css');
+
+        /**
+         * Featured Plugins
+         */
         if( $hook === HG_Login()->admin->pages['featured-plugins'] ){
 
             wp_enqueue_style('hg-login-featured-plugins', HG_Login()->plugin_url().'/assets/css/featured-plugins.css');
@@ -37,6 +46,9 @@ class HG_Login_Admin_Assets {
 
         }
 
+        /**
+         * Dashboard
+         */
         if( $hook === HG_Login()->admin->pages['dashboard'] ){
             wp_enqueue_style('hg-login-admin', HG_Login()->plugin_url().'/assets/css/admin.css');
             wp_enqueue_style('hg-login-dashboard', HG_Login()->plugin_url().'/assets/css/dashboard.css');

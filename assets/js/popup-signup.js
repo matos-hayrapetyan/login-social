@@ -252,17 +252,19 @@ function hgLoginPopupSignup( wrap ){
         }
 
         var valid = true,
-            validMsg = hgSignupPopupL10n.requiredField;
+            validMsg = hgSignupPopupL10n.requiredField,
+            val = jQuery(this).val();
         if( jQuery(this)[0].hasAttribute("data-type") ){
             switch( jQuery(this).data('type') ){
                 case 'email':
-                    valid = _this.checkValidEmail( jQuery(this).val() );
+                    valid = _this.checkValidEmail( val );
                     validMsg = hgSignupPopupL10n.invalidEmail;
-                    _this.checkUniqueEmail( jQuery(this).val() );
+                    _this.checkUniqueEmail( val );
                     break;
                 case 'login':
                     valid = true;
-                    _this.checkValidLogin( jQuery(this).val() );
+                    _this.checkValidLogin( val );
+                    _this.checkValidLoginFormatBlur( val );
                     break;
                 default :
                     valid = true;
@@ -307,11 +309,19 @@ function hgLoginPopupSignup( wrap ){
         el.siblings("label").append("<sup class='" + html_class + "'> &#42; "+message+"</sup>");
     };
 
+    _this.checkValidLoginFormatBlur = function (login) {
+        console.log('testing login');
+        if (!_this.checkValidLoginFormat(login)) {
+            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!');
+            console.log('invalid login');
+        }
+        console.log('tested login');
+    };
+
     _this.checkValidLoginFormat = function (login) {
-        var reg = new RegExp('/^[a-z0-9]+$/i');
+        var r = /^\w+$/g.test(login);
 
-        return login.match(reg, login);
-
+        return r;
     };
 
     _this.checkValidLogin = function( login ){
@@ -352,7 +362,7 @@ function hgLoginPopupSignup( wrap ){
 
     _this.checkUniqueEmail = function( email ){
         if( typeof email != 'string' || email == '' ){
-            _this.isInvalid(_this.loginInput,hgSignupPopupL10n.requiredField);
+            _this.isInvalid(_this.emailInput,hgSignupPopupL10n.requiredField);
             return false;
         }
 

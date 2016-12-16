@@ -43,7 +43,7 @@ class hg_login_Admin {
      * Creates Admin Menu Pages
      */
     public function admin_menu(){
-        $this->pages['main_page'] = add_menu_page( __( 'Login WP', 'hg_login' ),  __( 'Login WP', 'hg_login' ), 'manage_options', 'hg_login', '', HG_LOGIN_IMAGES_URL."/avatar.svg" );
+        $this->pages['main_page'] = add_menu_page( __( 'Login WP', 'hg_login' ),  __( 'Login WP', 'hg_login' ), 'manage_options', 'hg_login', '', HG_LOGIN_IMAGES_URL."/logo.svg" );
         $this->pages['dashboard'] = add_submenu_page('hg_login', __('Login WP Dashboard', 'hg_login'), 'Dashboard', 'manage_options', 'hg_login', array($this, 'init_dashboard'));
     }
 

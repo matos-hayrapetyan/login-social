@@ -30,7 +30,7 @@ class HG_Login_Button_Shortcode {
 
         }elseif( $atts['show_menu'] === 'yes' ){
 
-            echo hg_login_get_account_menu($atts);
+            echo hg_login_get_account_menu();
         }
 
         return ob_get_clean();
@@ -59,7 +59,7 @@ class HG_Signup_Button_Shortcode {
 
         }elseif( $atts['show_menu'] === 'yes' ){
 
-            echo hg_login_get_account_menu($atts);
+            echo hg_login_get_account_menu();
         }
 
         return ob_get_clean();

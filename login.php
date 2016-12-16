@@ -218,7 +218,14 @@ if ( ! class_exists( 'HG_Login' ) ) :
          * Register our widgets
          */
         public function register_widgets(){
+            /**
+             * Login Widget
+             */
             register_widget( 'HG_Login_Widget' );
+            /**
+             * Sign Up Widget
+             */
+            register_widget( 'HG_Login_Signup_Widget' );
         }
 
         /**
