@@ -50,10 +50,8 @@ hg_login = {
         clearTimeout(hgLoginPopupInfoTimeout);
         if( jQuery("#hg_login_popup_info_temp").length ){
             jQuery("#hg_login_popup_info_temp").addClass("close--popup");
-            console.log('hiding');
             var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
             jQuery("#hg_login_popup_info_temp").one( animationEnd,function(){
-                console.log('removing');
                 jQuery(this).remove();
                 dfd.resolve();
             } );

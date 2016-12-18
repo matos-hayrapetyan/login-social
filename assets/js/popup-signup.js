@@ -124,7 +124,6 @@ function hgLoginPopupSignup( wrap ){
 
         if(_this.enableRecaptcha){
             var recaptcha_response =grecaptcha.getResponse(_this.recpatchaWidgetID);
-            console.log(recaptcha_response);
             if(recaptcha_response == ''){
                 hg_login.showPopupInfo( '-error', hgSignupPopupL10n.recaptchaErrorMsg );
                 valid = false;
@@ -310,12 +309,9 @@ function hgLoginPopupSignup( wrap ){
     };
 
     _this.checkValidLoginFormatBlur = function (login) {
-        console.log('testing login');
         if (!_this.checkValidLoginFormat(login)) {
             _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!');
-            console.log('invalid login');
         }
-        console.log('tested login');
     };
 
     _this.checkValidLoginFormat = function (login) {

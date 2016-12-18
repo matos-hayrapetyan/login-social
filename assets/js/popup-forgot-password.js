@@ -79,7 +79,6 @@ function hgLoginPopupForgotPass(wrap){
 
         if(_this.enableRecaptcha){
             var recaptcha_response =grecaptcha.getResponse(_this.recpatchaWidgetID);
-            console.log(recaptcha_response);
             if(recaptcha_response == ''){
                 hg_login.showPopupInfo( '-error', hgLoginPopupL10n.recaptchaErrorMsg );
                 valid = false;
