@@ -9,41 +9,40 @@ jQuery(document).ready(function(){
         hgLoginSetCookie( 'HgLoginChristmasBannerShow', 'no', {expires:3456000} );
     });
 
+    var acc_menu_settings = jQuery( '.hg_login_acc_menu_settings' );
 
+    if( acc_menu_settings.length ){
+        var sortableOptions = {
+            handle: ".hg_login_drag"
+        };
 
+        acc_menu_settings.sortable(sortableOptions);
 
-    var sortableOptions = {
-        handle: ".hg_login_drag"
-    };
-
-    jQuery( '.hg_login_acc_menu_settings' ).sortable(sortableOptions);
-
-
-    jQuery(".hg_login_acc_menu_settings").on("click",".hg_login_del_acc_item",function(){
-       jQuery(this).parent().remove();
-    });
-
-    jQuery('.hg_login_add_acc_menu').on("click",function(){
-        jQuery.ajax({
-            url : hgLoginAdminL10n.ajax_admin,
-            method: 'post',
-            dataType :'json',
-            data : { action : 'hg_login_get_acc_menu_item', nonce: hgLoginAdminL10n.nonce },
-            beforeSend : function(){}
-        }).done(function(response){
-            if( response.success ){
-                jQuery( '.hg_login_acc_menu_settings' ).prepend( response.html );
-                if( typeof window.wpdevSetttings !== 'undefined' ){
-                    window.wpdevSetttings.masonry.masonry();
-                }
-            }
-        }).fail(function(error){
-            console.log(error);
+        acc_menu_settings.on("click",".hg_login_del_acc_item",function(){
+            jQuery(this).parent().remove();
         });
 
-        return false;
+        jQuery('.hg_login_add_acc_menu').on("click",function(){
+            jQuery.ajax({
+                url : hgLoginAdminL10n.ajax_admin,
+                method: 'post',
+                dataType :'json',
+                data : { action : 'hg_login_get_acc_menu_item', nonce: hgLoginAdminL10n.nonce },
+                beforeSend : function(){}
+            }).done(function(response){
+                if( response.success ){
+                    jQuery( '.hg_login_acc_menu_settings' ).prepend( response.html );
+                    if( typeof window.wpdevSetttings !== 'undefined' ){
+                        window.wpdevSetttings.masonry.masonry();
+                    }
+                }
+            }).fail(function(error){
+                console.log(error);
+            });
 
-    });
+            return false;
+        });
+    }
 });
 
 function hgLoginSetCookie(name, value, options) {

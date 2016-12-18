@@ -108,6 +108,10 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
                 array(
                     'handle' => 'open-sans',
                     'src' => 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'
+                ),
+                array(
+                    'handle' => 'roboto',
+                    'src' => 'https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,900'
                 )
             );
 
