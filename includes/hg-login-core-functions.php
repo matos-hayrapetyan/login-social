@@ -12,8 +12,8 @@ function hg_login_maybe_redirect_from_loginscreen(){
             setcookie( 'hg_login_action', 'open_login_popup');
         }
 
-        if (isset($_GET['key']) && $_GET['key'] === 'lostpassword') {
-            setcookie('hg_login_action', 'open_forgotpass_popup');
+        if( isset( $_GET['key'] ) && $_GET['key'] === 'lostpassword' ){
+            setcookie( 'hg_login_action', 'open_forgotpass_popup');
         }
 
         $redirect_to = apply_filters( 'hg_login_redirect_to_from_loginscreen', home_url() );
@@ -22,57 +22,106 @@ function hg_login_maybe_redirect_from_loginscreen(){
     }
 }
 
-function hg_login_login_button($args){
+/**
+ * Prints a login button with given arguments
+ *
+ * @param array $args
+ */
+function hg_login_login_button($args = array()){
     echo hg_login_get_login_button($args);
 }
 
-function hg_login_get_login_button($args){
+/**
+ * Returns HTML string for a login button with given arguments
+ *
+ * @param array $args
+ * @return string
+ */
+function hg_login_get_login_button($args = array()){
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/login-button.php',$args);
     return ob_get_clean();
 }
 
-function hg_login_signup_button($args){
+/**
+ * Prints out a sign up button with given arguments
+ *
+ * @param array $args
+ */
+function hg_login_signup_button($args = array()){
     echo hg_login_get_signup_button($args);
 }
 
-function hg_login_get_signup_button($args){
+/**
+ * Returns HTML string for a sign up button with given arguments
+ *
+ * @param array $args
+ * @return string
+ */
+function hg_login_get_signup_button($args = array()){
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/signup-button.php', $args);
     return ob_get_clean();
 }
 
+/**
+ * Returns HTML string for login popup
+ *
+ * @return string
+ */
 function hg_login_get_login_popup_content() {
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/login-popup.php');
     return ob_get_clean();
 }
 
+/**
+ * Returns HTML string for sign up popup
+ *
+ * @return string
+ */
 function hg_login_get_signup_popup_content() {
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/signup-popup.php');
     return ob_get_clean();
 }
 
-
+/**
+ * Returns HTML string for forgot password popup
+ *
+ * @return string
+ */
 function hg_login_get_forgotpass_popup_content(){
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/forgot-pass-popup.php');
     return ob_get_clean();
 }
 
+/**
+ * Returns HTML string for reset password popup
+ *
+ * @return string
+ */
 function hg_login_get_resetpass_popup_content(){
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/reset-pass-popup.php');
     return ob_get_clean();
 }
 
+/**
+ * Returns HTML string for acccount menu
+ *
+ * @return string
+ */
 function hg_login_get_account_menu(){
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/account-menu.php');
     return ob_get_clean();
 }
 
+/**
+ * Prints out login menu for current user
+ */
 function hg_login_current_user_dropdown_menu(){
     $menu_items = HG_Login()->settings->account_dropdown_menu;
 
@@ -81,6 +130,11 @@ function hg_login_current_user_dropdown_menu(){
     }
 }
 
+/**
+ * Returns default login menu
+ *
+ * @return array
+ */
 function hg_login_get_default_acc_dropdown_menu(){
     $default_menu = array(
         'titles' => array(
@@ -96,6 +150,14 @@ function hg_login_get_default_acc_dropdown_menu(){
     return $default_menu;
 }
 
+/**
+ * Returns HTML string for login menu single line ( used in wpdev-settings-api )
+ *
+ * todo: move this to HG_Login_Settings class
+ * @param $title
+ * @param $link
+ * @return string
+ */
 function hg_login_acc_menu_option_line( $title, $link ){
     $html = '<li>';
     $html .= '<span class="hg_login_drag"><i class="fa fa-arrows" aria-hidden="true"></i></span>';
