@@ -38,6 +38,17 @@ function hg_login_login_button($args = array()){
  * @return string
  */
 function hg_login_get_login_button($args = array()){
+    if( empty($args) ){
+        $args = wp_parse_args(
+            $args,
+            array(
+                'text' => HG_Login()->settings->login_button_text,
+                'show_menu' => 'no'
+            )
+        );
+    }
+
+
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/login-button.php',$args);
     return ob_get_clean();
@@ -59,6 +70,16 @@ function hg_login_signup_button($args = array()){
  * @return string
  */
 function hg_login_get_signup_button($args = array()){
+    if( empty($args) ){
+        $args = wp_parse_args(
+            $args,
+            array(
+                'text' => HG_Login()->settings->signup_button_text,
+                'show_menu' => 'no'
+            )
+        );
+    }
+
     ob_start();
     HG_Login_Template_Loader::get_template('frontend/signup-button.php', $args);
     return ob_get_clean();
