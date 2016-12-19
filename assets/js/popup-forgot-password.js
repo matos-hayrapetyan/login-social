@@ -85,10 +85,6 @@ function hgLoginPopupForgotPass(wrap){
             }
         }
 
-        if( _this.enableRecaptcha ){
-            data.recaptchaResponse = grecaptcha.getResponse(_this.recpatchaWidgetID);
-        }
-
         if(!valid){
             return false;
         }
@@ -103,6 +99,11 @@ function hgLoginPopupForgotPass(wrap){
             login: login,
             nonce: hgForgotPassPopupL10n.nonce
         };
+
+        if( _this.enableRecaptcha ){
+            data.recaptchaResponse = grecaptcha.getResponse(_this.recpatchaWidgetID);
+        }
+        
         jQuery.ajax({
             url: hgForgotPassPopupL10n.ajax_admin,
             method: 'post',
