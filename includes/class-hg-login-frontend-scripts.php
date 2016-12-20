@@ -62,7 +62,8 @@ class HG_Login_Frontend_Scripts {
             'usernameInUse' => __("Username already in use","hg_login"),
             'requiredField' => __( "required field", "hg_login" ),
             'passTooWeak' => __('Password is too weak','hg_login'),
-            'recaptchaErrorMsg' => __('Please verify the recaptcha','hg_login')
+            'recaptchaErrorMsg' => __('Please verify the recaptcha','hg_login'),
+            'min7symbols' => __( 'Min 7 symbols', 'hg_login' )
         ));
 
         wp_enqueue_script( 'hg_login_popup_forgotpass_js', HG_Login()->plugin_url().'/assets/js/popup-forgot-password.js',array(),false,true );

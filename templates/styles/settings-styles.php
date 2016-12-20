@@ -12,7 +12,9 @@
         background-color: #<?php echo HG_Login()->settings->popup_header_bg_color; ?>;
     }
 
-    .hg-login-modal-header {
+    .hg-login-modal-header,
+    .hg-login-modal-header h4,
+    .hg-login-modal-header h3 {
         color: #<?php echo HG_Login()->settings->popup_header_text_color; ?>;
     }
 

@@ -55,18 +55,39 @@ function hgLoginPopupSignup( wrap ){
             method: 'post',
             dataType :'json',
             data : { action : 'hg_signup_popup_ajax', nonce: hgSignupPopupL10n.nonce },
-            beforeSend : function(){}
-        }).done(function(response){
-            var container = jQuery("#hg_login_primary_form_popup");
-            if( container.length){
-                _this.wrap = container.parent();
-                container.remove();
-            }
-
-            _this.wrap.append( "<div id='hg_login_primary_form_popup' >" + response.return + "</div>" );
-            setTimeout(function(){
-                container.removeClass("hg_login_hide");
+            beforeSend : function(){
+                var container = jQuery("#hg_login_primary_form_popup");
+                if( container.length){
+                    _this.wrap = container.parent();
+                    container.remove();
+                }
                 jQuery("body").addClass("hg-login-popup-open");
+
+                _this.wrap.append(
+                    '<div id="hg_login_primary_form_popup">' +
+                        '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-signup">' +
+                            '<div class="hg-login-modal-fit center-center hg-login-layout">' +
+                                '<div class="hg-login-modal-container">' +
+                                    '<div class="hg-login-popup-spinner-flex">' +
+                                        '<div class="hg-login-popup-spinner">' +
+                                            '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' );
+
+
+            }
+        }).done(function(response){
+
+            _this.wrap.find('.hg-login-modal-container').html(response.return);
+
+            setTimeout(function(){
                 dfd.resolve();
             },0);
 
@@ -78,8 +99,6 @@ function hgLoginPopupSignup( wrap ){
 
     _this.submitForm = function(){
         if(_this.authorizing) return false;
-
-
 
         var valid = true,
             pass = _this.passInput.val(),
@@ -93,8 +112,8 @@ function hgLoginPopupSignup( wrap ){
             newsletter = _this.newsletterInput.is(":checked");
         }
 
-        if (!_this.checkValidLoginFormat(login)) {
-            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!');
+        if( _this.acceptWeakPass && pass.length < 7 ){
+            _this.isInvalid( _this.passInput, hgSignupPopupL10n.min7symbols );
             valid = false;
         }
 
@@ -103,16 +122,22 @@ function hgLoginPopupSignup( wrap ){
             valid = false;
         }
 
-        if( !_this.checkValidEmail(email) ){
-            _this.isInvalid( _this.emailInput, 'invalid email format' );
+        if( !_this.checkValidLoginFormat( login ) ){
+            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!' );
+            valid = false;
+        }
+
+
+        if( !_this.checkValidEmail( email ) ){
+            _this.isInvalid( _this.emailInput, hgSignupPopupL10n.invalidEmail );
             valid = false;
         }
 
         if( _this.termsInput.length ){
-           if( !_this.termsInput.is(":checked") ){
-               _this.isInvalid( _this.termsInput, hgSignupPopupL10n.requiredField );
-               valid = false;
-           }
+            if( !_this.termsInput.is(":checked") ){
+                _this.isInvalid( _this.termsInput, hgSignupPopupL10n.requiredField );
+                valid = false;
+            }
         }
 
         if( _this.container.find("input.invalid").length ) valid = false;
@@ -133,8 +158,6 @@ function hgLoginPopupSignup( wrap ){
         if(!valid){
             return false;
         }
-
-
 
         _this.doSignup(login,email,pass,newsletter);
         return false;
@@ -259,6 +282,7 @@ function hgLoginPopupSignup( wrap ){
                     valid = _this.checkValidEmail( val );
                     validMsg = hgSignupPopupL10n.invalidEmail;
                     _this.checkUniqueEmail( val );
+
                     break;
                 case 'login':
                     valid = true;
@@ -308,9 +332,9 @@ function hgLoginPopupSignup( wrap ){
         el.siblings("label").append("<sup class='" + html_class + "'> &#42; "+message+"</sup>");
     };
 
-    _this.checkValidLoginFormatBlur = function (login) {
-        if (!_this.checkValidLoginFormat(login)) {
-            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!');
+    _this.checkValidLoginFormatBlur = function(login){
+        if( !_this.checkValidLoginFormat(login) ){
+            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!' );
         }
     };
 
@@ -318,6 +342,7 @@ function hgLoginPopupSignup( wrap ){
         var r = /^\w+$/g.test(login);
 
         return r;
+
     };
 
     _this.checkValidLogin = function( login ){

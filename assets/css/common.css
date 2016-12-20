@@ -331,6 +331,7 @@
     display: block;
     outline: none;
     width: 350px;
+    min-height: 250px;
     margin: 0;
     box-sizing: border-box;
     color: #333333;
@@ -887,6 +888,7 @@
     padding: 0 15px 0 0;
     -webkit-transition: .2s background,.2s color,.2s box-shadow;
     transition: .2s background,.2s color,.2s box-shadow;
+    box-shadow: none !important;
 }
 
 .hg-login-account-main:hover {
@@ -969,5 +971,44 @@
     color: #7986CB;
 }
 
-
-
+.hg-login-popup-spinner-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:250px;
+}
+.hg-login-popup-spinner {
+    width: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hg-login-popup-spin {
+    width: 8px;
+    height: 8px;
+    background-color: #737373;
+    border-radius: 100%;
+    display: inline-block;
+    animation: hg-popup-bouncedelay 1.7s infinite ease-in-out both;
+    margin-right: 5px;
+}
+.hg-login-popup-spin.hg-spinner-1 {
+    animation-delay: -0.60s;
+}
+.hg-login-popup-spin.hg-spinner-2 {
+    animation-delay: -0.40s;
+}
+.hg-login-popup-spin.hg-spinner-3 {
+    animation-delay: -0.20s;
+}
+@keyframes hg-popup-bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    40% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}

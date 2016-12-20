@@ -51,21 +51,46 @@ function hgLoginPopupLogin( wrap ){
             method: 'post',
             dataType :'json',
             data : { action : 'hg_login_popup_ajax', nonce: hgLoginPopupL10n.loadPopupNonce },
-            beforeSend : function(){}
-        }).done(function(response){
-            var container = jQuery("#hg_login_primary_form_popup");
-            if( container.length){
-                _this.wrap = container.parent();
-                container.remove();
-            }
-
-            _this.wrap.append( "<div id='hg_login_primary_form_popup'>" + response.return + "</div>" );
-            setTimeout(function(){
-                container.removeClass("hg_login_hide");
+            beforeSend : function(){
+                var container = jQuery("#hg_login_primary_form_popup");
+                if( container.length){
+                    _this.wrap = container.parent();
+                    container.remove();
+                }
                 jQuery("body").addClass("hg-login-popup-open");
+
+                _this.wrap.append(
+                    '<div id="hg_login_primary_form_popup">' +
+                        '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-signin">' +
+                            '<div class="hg-login-modal-fit center-center hg-login-layout">' +
+                                '<div class="hg-login-modal-container">' +
+                                    '<div class="hg-login-popup-spinner-flex">' +
+                                        '<div class="hg-login-popup-spinner">' +
+                                            '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
+                                            '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' );
+            }
+        }).done(function(response){
+
+            _this.wrap.find('.hg-login-modal-container').html( response.return );
+
+            setTimeout(function(){
                 dfd.resolve();
             },0);
+
         }).fail(function(error){
+            if( jQuery("#hg_login_primary_form_popup").length ){
+                jQuery("#hg_login_primary_form_popup").remove();
+            }
+
+
             console.log(error);
         });
         return dfd.promise();
