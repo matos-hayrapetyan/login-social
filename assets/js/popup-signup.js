@@ -123,7 +123,7 @@ function hgLoginPopupSignup( wrap ){
         }
 
         if( !_this.checkValidLoginFormat( login ) ){
-            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!' );
+            _this.isInvalid(_this.loginInput, hgSignupPopupL10n.onlyLatinAndNumbers );
             valid = false;
         }
 
@@ -334,7 +334,7 @@ function hgLoginPopupSignup( wrap ){
 
     _this.checkValidLoginFormatBlur = function(login){
         if( !_this.checkValidLoginFormat(login) ){
-            _this.isInvalid(_this.loginInput, 'Only latin letters and numbers are allowed!' );
+            _this.isInvalid(_this.loginInput, hgSignupPopupL10n.onlyLatinAndNumbers );
         }
     };
 

@@ -77,17 +77,10 @@ function hgLoginPopupResetPassword(login, wrap){
                     '</div>' );
             }
         }).done(function(response){
-            var container = jQuery("#hg_login_primary_form_popup");
-            if( container.length){
-                _this.wrap = container.parent();
-                container.remove();
-            }
 
-            _this.wrap.append( "<div id='hg_login_primary_form_popup'>" + response.return + "</div>" );
+            _this.wrap.find('.hg-login-modal-container').html(response.return);
 
             setTimeout(function(){
-                container.removeClass("hg_login_hide");
-                jQuery("body").addClass("hg-login-popup-open");
                 dfd.resolve();
             },0);
         }).fail(function(error){
@@ -104,6 +97,11 @@ function hgLoginPopupResetPassword(login, wrap){
         var pass1 = _this.pass1Input.val(),
             pass2 = _this.pass2Input.val(),
             valid = true;
+
+        if( _this.acceptWeakPass && pass.length < 7 ){
+            _this.isInvalid( _this.pass1Input, hgResetPassPopupL10n.min7symbols );
+            valid = false;
+        }
 
         if( _this.pass1Input.val() !== _this.pass2Input.val() ){
             hg_login.showPopupInfo( '-error', hgResetPassPopupL10n.passwordsDoNotMatch );
