@@ -754,6 +754,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
                         <div class="wpdev-settins-submit-block">
                             <?php wp_nonce_field('wpdev_settings_save_options', 'wpdev_settings_save_nonce'); ?>
                             <input type="hidden" name="action" value="wpdev_save_settings" />
+                            <input type="hidden" name="wpdev_settings_current_plugin" value="<?php echo $this->plugin_id; ?>" />
                             <span class="spinner"></span>
                             <button value="save" type="submit" class="wpdev_settings_save_button wpdev-primary-button" name="wpdev_settings_save_options" ><?php _e( 'Save Settings' ); ?></button>
                         </div>
@@ -770,6 +771,10 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
             if (defined('DOING_AJAX') && DOING_AJAX){
                 $ajax = true;
 
+            }
+
+            if( ! isset( $_REQUEST['plugin_id'] ) || $_REQUEST['plugin_id'] !== $this->plugin_id ){
+                return false;
             }
 
             if( !isset( $_REQUEST['action'] ) || $_REQUEST['action'] !== 'wpdev_save_settings' ){
