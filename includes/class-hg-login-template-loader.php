@@ -76,4 +76,17 @@ class HG_Login_Template_Loader {
         do_action( 'hg_login_after_template_part', $template_name, $template_path, $located, $args );
     }
 
+    /**
+     * @param $template_name
+     * @param array $args
+     * @param string $template_path
+     * @param string $default_path
+     * @return string
+     */
+    public static function get_template_buffer( $template_name, $args = array(), $template_path = '', $default_path = '' ){
+        ob_start();
+        self::get_template($template_name,$args,$template_path,$default_path);
+        return ob_get_clean();
+    }
+
 }

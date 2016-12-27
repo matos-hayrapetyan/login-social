@@ -44,13 +44,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <span></span>
                         <i></i>
                     </div>
-                    <?php if( HG_Login()->settings->terms_check_enabled ): ?>
+                    <?php if( HG_Login()->settings->terms_check_enabled === 'yes'): ?>
                         <div class="hg-login-modal-input">
                             <input type="checkbox" name="signup-terms" id="hg-login-modal-terms" value="yes" required="required"  />
                             <label class="hg-login-modal-terms-label" for="hg-login-modal-terms"><span></span><?php echo HG_Login()->settings->terms_check_text; ?></label>
                         </div>
                     <?php endif; ?>
-                    <?php if( HG_Login()->settings->newsletter_check_enabled ): ?>
+                    <?php if( HG_Login()->settings->newsletter_check_enabled === 'yes'): ?>
                         <div class="hg-login-modal-input">
                             <input type="checkbox" name="signup-newsletter" id="hg-login-modal-newsletter" value="yes" />
                             <label for="hg-login-modal-newsletter"><span></span><?php echo HG_Login()->settings->newsletter_check_text; ?></label>

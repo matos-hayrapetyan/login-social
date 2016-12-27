@@ -105,7 +105,7 @@ if ( !function_exists('hg_login_new_user_notification') ) :
     /**
      * @param $user_id
      * @param string $notify
-     * @return bool|void
+     * @return bool
      */
 	function hg_login_new_user_notification( $user_id, $notify = '' ) {
 		global $wp_hasher;
@@ -122,7 +122,7 @@ if ( !function_exists('hg_login_new_user_notification') ) :
         }
 
         if ( 'admin' === $notify ) {
-            return;
+            return true;
         }
 
 		// Generate something random for a password reset key.
@@ -140,7 +140,6 @@ if ( !function_exists('hg_login_new_user_notification') ) :
 		update_user_option( $user->ID, 'hg_login_user_activated', 'no', true );
 
 		$message = sprintf(__('Username: %s','hg_login'), $user->user_login) . "\r\n\r\n";
-		$message .= sprintf(__('Password: %s','hg_login'), $user->user_pass) . "\r\n\r\n";
         $subject = sprintf(__('[%s] Your account info','hg_login'), $blogname);
 
         /* Check if email verification is not required, then a new registered user is set as verified to avoid messes later on */
