@@ -36,7 +36,7 @@ function hg_login_fb_access_login() {
 
         if ( $redirect_to == '' ) {
             if ( isset( $_GET['rdr'] ) ) {
-                $redirect_to = $_GET['rdr'];
+                $redirect_to = esc_url($_GET['rdr']);
             } else {
                 $redirect_to = site_url();
             }
