@@ -773,7 +773,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
 
             }
 
-            if( ! isset( $_REQUEST['plugin_id'] ) || $_REQUEST['plugin_id'] !== $this->plugin_id ){
+            if( ! isset( $_REQUEST['wpdev_settings_current_plugin'] ) || $_REQUEST['wpdev_settings_current_plugin'] !== $this->plugin_id ){
                 return false;
             }
 
