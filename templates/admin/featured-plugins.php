@@ -2,11 +2,11 @@
 <div class="huge-plugins">
     <div class="plaings-block">
         <div class="plugin">
-            <div class="image-block gallery"><a href="http://huge-it.com/wordpress-gallery/" target="_blank"></a></div>
+            <div class="image-block photo-gallery"><a href="http://huge-it.com/wordpress-photo-gallery/" target="_blank"></a></div>
             <div class="info-block">
-                <h2><a href="http://huge-it.com/wordpress-gallery/" target="_blank">Gallery</a></h2>
-                <p>Create the most stunning galleries for your website with 5 advanced views, video, lightbox and customization options.</p>
-                <a href="http://huge-it.com/wordpress-gallery/" class="view" target="_blank">View Plugin</a>
+                <h2><a href="http://huge-it.com/wordpress-photo-gallery/" target="_blank">Photo Gallery </a></h2>
+                <p>Access advanced options and customization tools of this ultimate gallery, use the best ever functionality and unique features.</p>
+                <a href="http://huge-it.com/wordpress-photo-gallery/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
         <div class="plugin">
@@ -21,7 +21,7 @@
             <div class="image-block responsive-slider"><a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank"></a></div>
             <div class="info-block">
                 <h2><a href="http://huge-it.com/wordpress-responsive-slider/" target="_blank">Responsive Slider</a></h2>
-                <p>Make stunning sliders using advanced video, YouTube, Vimeo options. Link slides with URL and more.</p>
+                <p>Make stunning sliders using advanced video, YouTube, Vimeo options. Link slides with URL, add text layers, animations and more.</p>
                 <a href="http://huge-it.com/wordpress-responsive-slider/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
@@ -31,6 +31,14 @@
                 <h2><a href="http://huge-it.com/forms/" target="_blank">Forms</a></h2>
                 <p>Create different recipients for each form, send newsletters, use ready-to-go fields and more with Forms Pro.</p>
                 <a href="http://huge-it.com/forms/" class="view" target="_blank">View Plugin</a>
+            </div>
+        </div>
+        <div class="plugin">
+            <div class="image-block gallery"><a href="http://huge-it.com/wordpress-gallery/" target="_blank"></a></div>
+            <div class="info-block">
+                <h2><a href="http://huge-it.com/wordpress-gallery/" target="_blank">Gallery</a></h2>
+                <p>Create unlimited stunning galleries of images and videos,  using 8 flexible and customizable views.Show them in a simple gallery forms.</p>
+                <a href="http://huge-it.com/wordpress-gallery/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
         <div class="plugin">
@@ -45,7 +53,7 @@
             <div class="image-block google-map"><a href="http://huge-it.com/google-map/" target="_blank"></a></div>
             <div class="info-block">
                 <h2><a href="http://huge-it.com/google-map/" target="_blank">Google map</a></h2>
-                <p>Make advanced customization, add directions and layers, export maps in CSV file, add links and HTML with Google Maps Pro..</p>
+                <p>Make advanced customization, add directions and layers, export maps in CSV file, add links and HTML with Google Maps Pro.</p>
                 <a href="http://huge-it.com/google-map/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
@@ -58,10 +66,18 @@
             </div>
         </div>
         <div class="plugin">
+            <div class="image-block login"><a href="http://huge-it.com/wordpress-login/" target="_blank"></a></div>
+            <div class="info-block">
+                <h2><a href="http://huge-it.com/wordpress-login/" target="_blank">Login</a></h2>
+                <p>Add Login and sign up buttons on your site with amazing popup. Customize and style it to your liking, using security options and reCAPTCHA.</p>
+                <a href="http://huge-it.com/wordpress-login/" class="view" target="_blank">View Plugin</a>
+            </div>
+        </div>
+        <div class="plugin">
             <div class="image-block catalog"><a href="http://huge-it.com/product-catalog/" target="_blank"></a></div>
             <div class="info-block">
                 <h2><a href="http://huge-it.com/product-catalog/" target="_blank">Catalog</a></h2>
-                <p>Your ultimate store and catalog is here. Create products, design and customize categories and product pages right away.</p>
+                <p>Your ultimate store and catalog in 5 stylish views. Create products, design, customize categories, product pages, messages, comments, ratings. </p>
                 <a href="http://huge-it.com/product-catalog/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
@@ -69,7 +85,7 @@
             <div class="image-block lightbox"><a href="http://huge-it.com/lightbox/" target="_blank"></a></div>
             <div class="info-block">
                 <h2><a href="http://huge-it.com/lightbox/" target="_blank">Lightbox</a></h2>
-                <p>One of the most popular lightbox Plugin in WordPress with advanced customization settings.</p>
+                <p>Pop up your images and videos in beautiful lightbox, share on social media and secure your images with watermark.</p>
                 <a href="http://huge-it.com/lightbox/" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
@@ -103,6 +119,14 @@
                 <h2><a href="http://huge-it.com/share-buttons/" target="_blank">Share buttons</a></h2>
                 <p>Spread the message of your websites all around social media using 11 beautiful design options and style settings of Share Buttons.</p>
                 <a href="http://huge-it.com/share-buttons/" class="view" target="_blank">View Plugin</a>
+            </div>
+        </div>
+        <div class="plugin">
+            <div class="image-block builder"><a href="http://huge-it.com/wordpress-price-table-builder" target="_blank"></a></div>
+            <div class="info-block">
+                <h2><a href="http://huge-it.com/wordpress-price-table-builder" target="_blank">Price Table Builder</a></h2>
+                <p>Access full customization list of Pricing Table Builder and change every corner of it, by customizing to your needs.</p>
+                <a href="http://huge-it.com/wordpress-price-table-builder" class="view" target="_blank">View Plugin</a>
             </div>
         </div>
     </div>

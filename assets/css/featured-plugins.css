@@ -28,12 +28,12 @@
 .huge-plugins .plaings-block .plugin .image-block{
     width: 300px;
     height: 197px;
-    background-image: url(../images/featured-plugins/sprite.png);
     background-repeat: no-repeat;
+    background-image: url(../images/featured-plugins/sprite.png);
     position: relative;
 }
 
-.huge-plugins .plaings-block .plugin .image-block:hover:before {
+.huge-plugins .plaings-block .plugin .image-block a:hover:before {
     content: "";
     width: 100%;
     height: 100%;
@@ -41,7 +41,6 @@
     position: absolute;
     background-color: #fff;
     opacity: 0.12;
-    pointer-events: none;
 }
 
 .huge-plugins .plaings-block .plugin .image-block a {
@@ -120,6 +119,16 @@
     background-position: 70px -1599px;
 }
 
+.huge-plugins .plaings-block .plugin .image-block.builder {
+    background-color: #3bc6b8;
+    background-position: -1663px -16px;
+}
+
+.huge-plugins .plaings-block .plugin .image-block.photo-gallery {
+    background-color: #fe7b46;
+    background-position: -1649px -475px;
+}
+
 .huge-plugins .plaings-block .plugin .info-block {
     text-align: center;
     padding: 15px 25px 33px 25px;
@@ -145,11 +154,11 @@
     color: #787878;
     margin-top: 18px;
     font-size: 14px;
-    min-height: 76px;
+    min-height: 79px;
     max-height: 76px;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    line-height: 20px;
 }
 
 .huge-plugins .plaings-block .plugin .info-block .view{
