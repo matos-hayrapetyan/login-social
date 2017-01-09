@@ -1,9 +1,10 @@
 <?php
+
 /*
-Plugin Name: Login WP
-Plugin URI:  http://huge-it.com
-Description: login WP
-Version:     1.0
+Plugin Name: Huge IT Login
+Plugin URI: http://huge-it.com/wordpress-login/
+Description: Create easy custom login and registration plugin with this awesome WordPress login plugin. Use reCAPTCHA, pop-up and advanced design options.
+Version:     1.0.0
 Author:      Huge-IT
 Author URI:  http://huge-it.com
 License:     GPL2
@@ -22,9 +23,9 @@ if ( ! class_exists( 'HG_Login' ) ) :
 
         /**
          * Version of plugin
-         * @var float
+         * @var string
          */
-        public $version = 1.0;
+        public $version = "1.0.0";
 
         /**
          * Instance of hg_login_Admin class to manage admin
