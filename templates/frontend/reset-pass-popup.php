@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
             <div class="-flex"></div>
             <div id="hg-login-button-resetpass-submit" class="-button -type-primary -size-32 -view-flat">
-                <div class="button--content -layout -horizontal -center-center -space-h-8"><?php _e( "Send", "hg_login" ); ?></div>
+                <div class="button--content -layout -horizontal -center-center -space-h-8"><?php _e( "Save", "hg_login" ); ?></div>
             </div>
         </div>
     </div>
