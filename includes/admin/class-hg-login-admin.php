@@ -52,6 +52,7 @@ class hg_login_Admin {
      */
     public function admin_menu_after_settings(){
         $this->pages['featured-plugins'] = add_submenu_page('hg_login', __('Featured Plugins', 'hg_login'), __('Featured Plugins', 'hg_login'), 'manage_options', 'hg_login_featured_plugins', array(HG_Login()->admin->featured_plugins, 'init_admin'));
+        $this->pages['licensing'] = add_submenu_page('hg_login', __('Licensing', 'hg_login'), __('Licensing', 'hg_login'), 'manage_options', 'hg_login_licensing', array($this, 'licensing_page'));
     }
 
     /**
@@ -67,6 +68,13 @@ class hg_login_Admin {
      */
     public function init_dashboard(){
         HG_Login_Template_Loader::get_template('admin/dashboard.php');
+    }
+
+	/**
+	 * Licensing page
+	 */
+    public function licensing_page(){
+	    HG_Login_Template_Loader::get_template('admin/licensing.php');
     }
 
 

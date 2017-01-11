@@ -55,6 +55,11 @@ class HG_Login_Admin_Assets {
             wp_enqueue_style('animate-css', HG_Login()->plugin_url().'/vendor/animate-css/animate.css');
             wp_enqueue_style('open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
         }
+
+
+        if( $hook === HG_Login()->admin->pages['licensing'] ){
+	        wp_enqueue_style('licensing', HG_Login()->plugin_url().'/assets/css/licensing.css');
+        }
     }
 }
 return new HG_Login_Admin_Assets();
