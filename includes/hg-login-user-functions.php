@@ -81,10 +81,14 @@ function hg_login_resetpassword_notification( $user_id ){
     wp_mail($user->user_email, sprintf(__('[%s] Reset Password','hg_login'), $blogname), $message);
 }
 
-function hg_login_new_user_notifications($user_id, $notify = 'both'){
+function hg_login_new_user_notifications($user_id, $type = ''){
     if( HG_Login()->settings->email_notify_admin === 'yes' ){
         hg_login_new_user_notification( $user_id, 'admin' );
     }
+
+	if( $type === 'facebook' )
+		return;
+
     hg_login_new_user_notification( $user_id, '' );
 }
 

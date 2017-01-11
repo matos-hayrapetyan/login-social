@@ -161,17 +161,12 @@
     height: 45px;
     text-align: center;
     line-height: 45px;
-    background-color: #1bbc45;
     color: #fff;
     font-size: 18px;
     border-radius: 3px;
     cursor: pointer;
     padding: 0 50px;
     margin: 15px auto 5px;
-}
-
-.-button.-view-flat.-type-primary:hover {
-    background: #1bbc45;
 }
 
 .hg-login-via-social {

@@ -148,10 +148,12 @@
 
     .-button.-view-flat.-type-primary {
         color: #<?php echo HG_Login()->settings->popup_primary_btn_color; ?>;
+        background-color: #<?php echo HG_Login()->settings->popup_primary_btn_bg_color; ?>;
     }
 
     .-button.-view-flat.-type-primary:hover {
         color: #<?php echo HG_Login()->settings->popup_primary_btn_hover_color; ?>;
+        background-color: #<?php echo HG_Login()->settings->popup_primary_btn_hover_bg_color; ?>;
     }
 
     .-button.-view-flat {

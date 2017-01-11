@@ -108,7 +108,10 @@ function հg_login_register_fb_account( $me_info ){
      *
      * @param int $user_id ID of the newly registered user.
      */
-    do_action( 'hg_login_register_new_user', $new_user );
+	do_action( 'hg_login_register_new_user', $new_user, 'facebook' );
+
+	update_user_option( $new_user, 'hg_login_activation_key', '', true );
+	update_user_option( $new_user, 'hg_login_user_activated', 'yes', true );
 
     $user          = get_user_by( 'ID', $new_user );
 
