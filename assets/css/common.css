@@ -424,11 +424,9 @@
 .hg-login-modal-input input[type="url"],
 .hg-login-modal-input input[type="week"],
 .hg-login-modal-input textarea {
-    border-color: #CCCCCC;
     border-style: none none solid;
     border-width: 0 0 1px;
     box-sizing: border-box;
-    color: #999;
     font-size: 16px;
     padding: 10px 10px 5px 5px;
     width: 100%;

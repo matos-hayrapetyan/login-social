@@ -1,4 +1,5 @@
-<p>You are using the Lite version of the Huge-IT Login for WordPress. If you want to get more awesome options, advanced features, settings to customize every area of the plugin, then check out the Full License plugin. The full version of the plugin is available in 3 different packages of one-time payment.</p>
+<p><?php _e( 'You are using the Lite version of the Huge-IT Login for WordPress. If you want to get more awesome options, advanced features, settings to customize every area of the plugin, then check out the Full License plugin. The full version of the plugin is available in 3 different packages of one-time payment.', 'hg_login' ); ?></p>
+<a href="http://huge-it.com/wordpress-login/" target="_blank" class="button-primary"><?php _e( 'Purchase a License', 'hg_login' ); ?></a>
 <div class="login">
 	<div class="login-block">
 		<div class="licens">

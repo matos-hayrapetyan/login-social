@@ -60,7 +60,6 @@ class hg_login_Admin {
      */
     public function print_banners(){
         HG_Login_Template_Loader::get_template('admin/free-banner.php');
-        HG_Login_Template_Loader::get_template('admin/christmas-banner.php');
     }
 
     /**

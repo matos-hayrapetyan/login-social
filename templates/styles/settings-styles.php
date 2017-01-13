@@ -7,30 +7,25 @@
     .hg-login-modal-container {
         background-color: #<?php echo HG_Login()->settings->popup_bg_color; ?>;
     }
-
     .hg-login-modal-header {
         background-color: #<?php echo HG_Login()->settings->popup_header_bg_color; ?>;
     }
-
     .hg-login-modal-header,
     .hg-login-modal-header h4,
     .hg-login-modal-header h3 {
         color: #<?php echo HG_Login()->settings->popup_header_text_color; ?>;
     }
-
     .view-flat.type-light {
         color: #<?php echo HG_Login()->settings->popup_close_btn_color; ?>;
     }
-
     .modal-auth--social-button .-facebook {
         color: #<?php echo HG_Login()->settings->popup_fb_btn_text_color; ?>;
         background-color: #<?php echo HG_Login()->settings->popup_fb_btn_bg_color; ?>;
     }
-
-     .hg-login-modal-footer {
-         background-color: #<?php echo HG_Login()->settings->popup_footer_bg_color; ?>;
-     }
-
+    .hg-login-modal-footer {
+        background-color: #<?php echo HG_Login()->settings->popup_footer_bg_color; ?>;
+        color: #<?php echo HG_Login()->settings->popup_footer_text_color; ?>
+    }
     .hg-login-modal-input input[type="color"],
     .hg-login-modal-input input[type="date"],
     .hg-login-modal-input input[type="datetime"],
@@ -48,34 +43,48 @@
     .hg-login-modal-input textarea {
         background-color: #<?php echo HG_Login()->settings->popup_input_bg_color; ?>;
         box-shadow:0 0 0 1000px #<?php echo HG_Login()->settings->popup_input_bg_color; ?> inset;
+        border-color: #<?php echo HG_Login()->settings->popup_input_focused_bg_color; ?>;
+        color: #<?php echo HG_Login()->settings->popup_input_text_color; ?>;
     }
-
     .hg-login-modal-input input:-webkit-autofill,
     .hg-login-modal-input textarea:-webkit-autofill,
     .hg-login-modal-input select:-webkit-autofill {
         background-color: #<?php echo HG_Login()->settings->popup_input_bg_color; ?>;
         box-shadow:0 0 0 1000px #<?php echo HG_Login()->settings->popup_input_bg_color; ?> inset;
     }
-
     .hg-login-modal-input input[type="color"]:focus,
+    .hg-login-modal-input input[type="color"]:valid,
     .hg-login-modal-input input[type="date"]:focus,
+    .hg-login-modal-input input[type="date"]:valid,
     .hg-login-modal-input input[type="datetime"]:focus,
+    .hg-login-modal-input input[type="datetime"]:valid,
     .hg-login-modal-input input[type="datetime-local"]:focus,
+    .hg-login-modal-input input[type="datetime-local"]:valid,
     .hg-login-modal-input input[type="email"]:focus,
+    .hg-login-modal-input input[type="email"]:valid,
     .hg-login-modal-input input[type="month"]:focus,
+    .hg-login-modal-input input[type="month"]:valid,
     .hg-login-modal-input input[type="number"]:focus,
+    .hg-login-modal-input input[type="number"]:valid,
     .hg-login-modal-input input[type="password"]:focus,
+    .hg-login-modal-input input[type="password"]:valid,
     .hg-login-modal-input input[type="search"]:focus,
+    .hg-login-modal-input input[type="search"]:valid,
     .hg-login-modal-input input[type="tel"]:focus,
+    .hg-login-modal-input input[type="tel"]:valid,
     .hg-login-modal-input input[type="text"]:focus,
+    .hg-login-modal-input input[type="text"]:valid,
     .hg-login-modal-input input[type="time"]:focus,
+    .hg-login-modal-input input[type="time"]:valid,
     .hg-login-modal-input input[type="url"]:focus,
+    .hg-login-modal-input input[type="url"]:valid,
     .hg-login-modal-input input[type="week"]:focus,
-    .hg-login-modal-input textarea:focus {
-        box-shadow:0 0 0 1000px #<?php echo HG_Login()->settings->popup_input_bg_color; ?> inset;
+    .hg-login-modal-input input[type="week"]:valid,
+    .hg-login-modal-input textarea:focus,
+    .hg-login-modal-input textarea:valid {
+        box-shadow:0 0 0 1000px #<?php echo HG_Login()->settings->popup_input_focused_bg_color; ?> inset;
+        color:#<?php echo HG_Login()->settings->popup_input_focused_text_color; ?>;
     }
-
-
     .hg-login-modal-input input[type="color"] ~ label,
     .hg-login-modal-input input[type="date"] ~ label,
     .hg-login-modal-input input[type="datetime"] ~ label,
@@ -93,7 +102,6 @@
     .hg-login-modal-input textarea ~ label {
         color: #<?php echo HG_Login()->settings->popup_input_label_color; ?>;
     }
-
     .hg-login-modal-input input[type="color"]:focus ~ label,
     .hg-login-modal-input input[type="color"]:valid ~ label,
     .hg-login-modal-input input[type="date"]:focus ~ label,
@@ -126,7 +134,6 @@
     .hg-login-modal-input textarea:valid ~ label {
         color: #<?php echo HG_Login()->settings->popup_input_focused_label_color; ?>;
     }
-
     .hg-login-modal-input input[type="color"] ~ label sup,
     .hg-login-modal-input input[type="date"].invalid ~ label sup,
     .hg-login-modal-input input[type="datetime"].invalid ~ label sup,
@@ -145,46 +152,53 @@
     .hg-login-modal-input textarea:focus ~ label {
         color: #<?php echo HG_Login()->settings->popup_input_error_color; ?>;
     }
-
+    .hg-login-modal-input input[type="color"] ~ span,
+    .hg-login-modal-input input[type="date"] ~ span,
+    .hg-login-modal-input input[type="datetime"] ~ span,
+    .hg-login-modal-input input[type="datetime-local"] ~ span,
+    .hg-login-modal-input input[type="email"] ~ span,
+    .hg-login-modal-input input[type="month"] ~ span,
+    .hg-login-modal-input input[type="number"] ~ span,
+    .hg-login-modal-input input[type="password"] ~ span,
+    .hg-login-modal-input input[type="search"] ~ span,
+    .hg-login-modal-input input[type="tel"] ~ span,
+    .hg-login-modal-input input[type="text"] ~ span,
+    .hg-login-modal-input input[type="time"] ~ span,
+    .hg-login-modal-input input[type="url"] ~ span,
+    .hg-login-modal-input input[type="week"] ~ span,
+    .hg-login-modal-input textarea ~ span {
+        background-color: #<?php echo HG_Login()->settings->popup_header_bg_color; ?>;
+    }
     .-button.-view-flat.-type-primary {
         color: #<?php echo HG_Login()->settings->popup_primary_btn_color; ?>;
         background-color: #<?php echo HG_Login()->settings->popup_primary_btn_bg_color; ?>;
     }
-
     .-button.-view-flat.-type-primary:hover {
         color: #<?php echo HG_Login()->settings->popup_primary_btn_hover_color; ?>;
         background-color: #<?php echo HG_Login()->settings->popup_primary_btn_hover_bg_color; ?>;
     }
-
     .-button.-view-flat {
         color: #<?php echo HG_Login()->settings->popup_secondary_btn_color; ?>;
     }
-
     .-button.-view-flat:hover {
         color: #<?php echo HG_Login()->settings->popup_secondary_btn_hover_color; ?>;
     }
-
     #hg_login_primary_button {
         background-color: #<?php echo HG_Login()->settings->login_btn_bg_color; ?>;
         color: #<?php echo HG_Login()->settings->login_btn_text_color; ?>;
         font-size: <?php echo HG_Login()->settings->login_btn_text_size; ?>px;
     }
-
-
     #hg_login_primary_button:hover {
         background-color: #<?php echo HG_Login()->settings->login_btn_hover_bg_color; ?>;
         color: #<?php echo HG_Login()->settings->login_btn_hover_text_color; ?>;
     }
-
     #hg_signup_primary_button {
         background-color: #<?php echo HG_Login()->settings->signup_btn_bg_color; ?>;
         color: #<?php echo HG_Login()->settings->signup_btn_text_color; ?>;
         font-size: <?php echo HG_Login()->settings->signup_btn_text_size; ?>px;
     }
-
     #hg_signup_primary_button:hover {
         background-color: #<?php echo HG_Login()->settings->signup_btn_hover_bg_color; ?>;
         color: #<?php echo HG_Login()->settings->signup_btn_hover_text_color; ?>;
     }
 </style>
-

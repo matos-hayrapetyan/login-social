@@ -3,11 +3,6 @@ jQuery(document).ready(function(){
         jQuery(".free_version_banner").css("display","none");
         hgLoginSetCookie( 'HgLoginBannerShow', 'no', {expires:86400} );
     });
-    jQuery(".christmas-close").on("click",function(e){
-        e.preventDefault();
-        jQuery(".backend-christmas-banner").css("display","none");
-        hgLoginSetCookie( 'HgLoginChristmasBannerShow', 'no', {expires:3456000} );
-    });
 
     var acc_menu_settings = jQuery( '.hg_login_acc_menu_settings' );
 

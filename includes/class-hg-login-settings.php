@@ -74,17 +74,22 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 		$this->accept_weak_password             = $this->get_option( "accept_weak_password", "no" );
 		$this->redirect_from_loginscreen        = $this->get_option( "redirect_from_loginscreen", "no" );
 
-		$this->disable_default_css              = $this->get_option( 'disable_default_css', 'no' );
-		$this->custom_css                       = $this->get_option( "custom_css", '' );
+		$this->disable_default_css = $this->get_option( 'disable_default_css', 'no' );
+		$this->custom_css          = $this->get_option( "custom_css", '' );
+
 		$this->popup_bg_color                   = $this->get_option( "popup_bg_color", 'FFFFFF' );
 		$this->popup_footer_bg_color            = $this->get_option( "popup_footer_bg_color", 'FFFFFF' );
+		$this->popup_footer_text_color          = $this->get_option( "popup_footer_text_color", '333333' );
 		$this->popup_header_bg_color            = $this->get_option( "popup_header_bg_color", '3F51B5' );
 		$this->popup_header_text_color          = $this->get_option( "popup_header_text_color", 'FFFFFF' );
 		$this->popup_close_btn_color            = $this->get_option( "popup_close_btn_color", 'FFFFFF' );
 		$this->popup_fb_btn_bg_color            = $this->get_option( "popup_fb_btn_bg_color", '3b5998' );
 		$this->popup_fb_btn_text_color          = $this->get_option( "popup_fb_btn_text_color", 'FFFFFF' );
+		$this->popup_input_text_color           = $this->get_option( "popup_input_text_color", '999999' );
 		$this->popup_input_bg_color             = $this->get_option( "popup_input_bg_color", 'FFFFFF' );
 		$this->popup_input_label_color          = $this->get_option( "popup_input_label_color", '999999' );
+		$this->popup_input_focused_text_color   = $this->get_option( "popup_input_focused_text_color", '999999' );
+		$this->popup_input_focused_bg_color     = $this->get_option( "popup_input_focused_bg_color", 'FFFFFF' );
 		$this->popup_input_focused_label_color  = $this->get_option( "popup_input_focused_label_color", '444444' );
 		$this->popup_input_error_color          = $this->get_option( "popup_input_error_color", 'E53935' );
 		$this->popup_primary_btn_color          = $this->get_option( "popup_primary_btn_color", 'FFFFFF' );
@@ -417,6 +422,12 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 				'default'    => $this->popup_footer_bg_color,
 				'label'      => __( 'Footer Background color', 'hg_login' )
 			),
+			'popup_footer_text_color'          => array(
+				'section' => 'popup_styles',
+				'type'    => 'color',
+				'default' => $this->popup_footer_text_color,
+				'label'   => __( 'Footer Text Color', 'hg_login' )
+			),
 			'popup_header_bg_color'            => array(
 				'section'    => 'popup_styles',
 				'type'       => 'text',
@@ -452,6 +463,12 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 				'default'    => $this->popup_fb_btn_text_color,
 				'label'      => __( 'Facebook Button Text Color', 'hg_login' )
 			),
+			'popup_input_text_color'           => array(
+				'section' => 'popup_styles',
+				'type'    => 'color',
+				'default' => $this->popup_input_text_color,
+				'label'   => __( 'Text Field Text Color', 'hg_login' )
+			),
 			'popup_input_bg_color'             => array(
 				'section'    => 'popup_styles',
 				'type'       => 'text',
@@ -466,12 +483,24 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 				'default'    => $this->popup_input_label_color,
 				'label'      => __( 'Text Field Label Color', 'hg_login' )
 			),
+			'popup_input_focused_text_color'   => array(
+				'section' => 'popup_styles',
+				'type'    => 'color',
+				'default' => $this->popup_input_focused_text_color,
+				'label'   => __( 'Text Field Focused Text Color', 'hg_login' )
+			),
 			'popup_input_focused_label_color'  => array(
 				'section'    => 'popup_styles',
 				'type'       => 'text',
 				'html_class' => array( 'jscolor' ),
 				'default'    => $this->popup_input_focused_label_color,
 				'label'      => __( 'Text Field Focused Label Color', 'hg_login' )
+			),
+			'popup_input_focused_bg_color'     => array(
+				'section' => 'popup_styles',
+				'type'    => 'color',
+				'default' => $this->popup_input_focused_bg_color,
+				'label'   => __( 'Text Field Focused Background Color', 'hg_login' )
 			),
 			'popup_input_error_color'          => array(
 				'section'    => 'popup_styles',
