@@ -3,25 +3,25 @@ Contributors: Huge-IT
 Donate link: http://huge-it.com/wordpress-login/
 Tags: login, access, admin, authentication, wordpress login, admin login, login form, log in, custom login, Facebook Login, registration, register,
 Requires at least: 3.0.1
-Tested up to: 4.7
-Stable tag: 1.0.0
+Tested up to: 4.7.1
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Login - Create easy custom login and registration plugin with this awesome WordPress login plugin. Use reCAPTCHA, pop-up and advanced design options.
+Login plugin allows to create easy custom login and registration. With this WordPress login plugin use reCaptcha, pop-up and advanced design options.
 
 == Description ==
 
 ### Login
 
-= Create easy custom login and registration plugin with this awesome WordPress login plugin. Use reCapctcha, pop-up and advanced design options. =
+= Login plugin allows to create easy custom login and registration. With this WordPress login plugin use reCaptcha, pop-up and advanced design options. =
 
 * [Wordpress Login](http://huge-it.com/wordpress-login/)
 * [Demo Login](http://huge-it.com/wordpress-login-demo-1-login/)
 * [FAQ Login](http://huge-it.com/wordpress-login-faq/)
 * [User Manual Login](http://huge-it.com/wordpress-login-user-manual/)
 * [Login Support](http://huge-it.com/contact-us/)
-* [Login Github Project](https://github.com/Huge-IT/login)
+* [Login Github Project](https://github.com/Huge-IT/login-social)
 
 
 Huge-IT has prepared an awesome plugin for managing and simplifying the process of registration and login to the website. If you have decided to have social website with a sign up ability the Login plugin may be used to let visitors enter in your dashboard using a simple and beautifully designed buttons, the Button opens a popup with a nice form which a user fills in and access to his/her account.
@@ -99,8 +99,8 @@ If you think, that you found a bug in our [WordPress Login](http://huge-it.com/w
 1. Download the ZIP file from Wordpress website
 2. Extract the **login-social** directory to your computer
 3. Upload the **login-social** directory to the **/wp-content/plugins/** directory
-4. Activate the plugin in the Plugin dashboard
-5. You can see the plugin installed on Wordpress left menu
+4. Activate the plugin in the Plugin dashboard.
+5. You can see the plugin installed on Wordpress left menu.
 
 Now you can set your Login options, images and use our Login.
 
@@ -172,7 +172,7 @@ If you don’t have free version then pass the first step
 * 1. Download the ZIP file from WordPress website
 * 2. Extract the login directory to your computer
 * 3. Upload the login directory to the /wp-content/plugins/ directory
-* 4. Activate the plugin in the Plugin dashboard
+* 4. Activate the plugin in the Plugin dashboard.
 * 5. You can see the plugin installed on WordPress left menu
 
 
@@ -331,6 +331,13 @@ As being a pro option this reCaptcha from Google will protect from spam and harm
 If you think, that you found a bug in our [WordPress login](http://huge-it.com/wordpress-login/) plugin or have any question contact us at [info@huge-it.com](mailto:info@huge-it.com)
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Fixed the email issue when registered via Facebook 
+* Made UX/UI optimization in terms of CSS on front end
+* Added design options for popups (Pro)
+
 
 = 1.0.0 =
 
