@@ -1,7 +1,7 @@
 .slider-container{
   width: 40%;
   height: 14px;
-  float: right;
+  float: left;
   position: relative;
   margin-top: 15px;
 }

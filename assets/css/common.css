@@ -161,6 +161,7 @@
     height: 45px;
     text-align: center;
     line-height: 45px;
+    background-color: #1bbc45;
     color: #fff;
     font-size: 18px;
     border-radius: 3px;
@@ -333,7 +334,6 @@
     -webkit-overflow-scrolling: touch;
     overflow: auto;
     line-height: 20px;
-    border-radius: 2px;
     max-width: 612px;
     padding: 0;
     z-index: 9999;
@@ -380,11 +380,8 @@
 
 .hg-login-modal-body {
     padding: 10px 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
     position: relative;
     min-height: 100px;
-    max-height: calc(100vh - 200px);
     -webkit-flex: 1 1 auto;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -970,6 +967,7 @@
     align-items: center;
     height:250px;
 }
+
 .hg-login-popup-spinner {
     width: 100px;
     text-align: center;
@@ -977,6 +975,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .hg-login-popup-spin {
     width: 8px;
     height: 8px;
@@ -986,22 +985,29 @@
     animation: hg-popup-bouncedelay 1.7s infinite ease-in-out both;
     margin-right: 5px;
 }
+
 .hg-login-popup-spin.hg-spinner-1 {
     animation-delay: -0.60s;
 }
+
 .hg-login-popup-spin.hg-spinner-2 {
     animation-delay: -0.40s;
 }
+
 .hg-login-popup-spin.hg-spinner-3 {
     animation-delay: -0.20s;
 }
+
 @keyframes hg-popup-bouncedelay {
     0%, 80%, 100% {
         transform: scale(0);
         opacity: 0;
     }
+
     40% {
         transform: scale(1.0);
         opacity: 1;
     }
 }
+
+

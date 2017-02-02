@@ -60,20 +60,20 @@ function hgLoginPopupResetPassword(login, wrap){
 
                 _this.wrap.append(
                     '<div id="hg_login_primary_form_popup">' +
-                        '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-forgotpass">' +
-                            '<div class="hg-login-modal-fit center-center hg-login-layout">' +
-                                '<div class="hg-login-modal-container">' +
-                                    '<div class="hg-login-popup-spinner-flex">' +
-                                        '<div class="hg-login-popup-spinner">' +
-                                            '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
+                    '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-forgotpass">' +
+                    '<div class="hg-login-modal-fit center-center hg-login-layout">' +
+                    '<div class="hg-login-modal-container">' +
+                    '<div class="hg-login-popup-spinner-flex">' +
+                    '<div class="hg-login-popup-spinner">' +
+                    '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
                     '</div>' );
             }
         }).done(function(response){
@@ -98,18 +98,36 @@ function hgLoginPopupResetPassword(login, wrap){
             pass2 = _this.pass2Input.val(),
             valid = true;
 
-        if( _this.acceptWeakPass && pass.length < 7 ){
-            _this.isInvalid( _this.pass1Input, hgResetPassPopupL10n.min7symbols );
-            valid = false;
-        }
-
         if( _this.pass1Input.val() !== _this.pass2Input.val() ){
             hg_login.showPopupInfo( '-error', hgResetPassPopupL10n.passwordsDoNotMatch );
             valid = false;
         }
 
-        if( _this.passStrength <= 2 && !_this.acceptWeakPass ){
-            hg_login.showPopupInfo('-error', hgSignupPopupL10n.passTooWeak);
+        /**
+         * check password against whitespaces
+         */
+        var invalidPass = /\s/g.test(pass );
+
+        if( invalidPass ){
+            _this.isInvalid( _this.passInput, hgResetPassPopupL10n.noWhiteSpaces );
+            valid = false;
+        }else if( _this.passStrength <= 2 && !_this.acceptWeakPass ){
+            /**
+             * Password weakness
+             */
+            hg_login.showPopupInfo('-error', hgResetPassPopupL10n.passTooWeak);
+            valid = false;
+        }else if( pass.length < hgResetPassPopupL10n.passwordMinLength ){
+            /**
+             * Check against minimum allowed length
+             */
+            _this.isInvalid( _this.passInput, hgResetPassPopupL10n.minSymbols );
+            valid = false;
+        }else if( pass.length > hgResetPassPopupL10n.passwordMaxLength ){
+            /**
+             * Check against maximum allowed length
+             */
+            _this.isInvalid( _this.passInput, hgResetPassPopupL10n.maxSymbols );
             valid = false;
         }
 

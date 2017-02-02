@@ -48,8 +48,8 @@ class HG_Login_Frontend_Scripts {
             'loginError' => __('This field is required','hg_login'),
             'nonce' => wp_create_nonce('hg_login'),
             'requiredField' => __( "required field", "hg_login" ),
-	        'loadPopupNonce' => wp_create_nonce( 'load_popup_nonce' ),
-	        'recaptchaErrorMsg' => __( 'Please verify the recaptcha', 'hg_login' ),
+            'loadPopupNonce' => wp_create_nonce( 'load_popup_nonce' ),
+            'recaptchaErrorMsg' => __( 'Please verify the recaptcha', 'hg_login' ),
         ));
 
         wp_enqueue_script( 'hg_login_popup_signup_js', HG_Login()->plugin_url().'/assets/js/popup-signup.js',array(),false,true );
@@ -63,8 +63,12 @@ class HG_Login_Frontend_Scripts {
             'requiredField' => __( "required field", "hg_login" ),
             'passTooWeak' => __('Password is too weak','hg_login'),
             'recaptchaErrorMsg' => __('Please verify the recaptcha','hg_login'),
-            'min7symbols' => __( 'Min 7 symbols', 'hg_login' ),
-            'onlyLatinAndNumbers' => __('Only latin letters and numbers are allowed!','hg_login')
+            'passwordMinLength' => HG_Login()->settings->password_min_length,
+            'passwordMaxLength' => HG_Login()->settings->password_max_length,
+            'minSymbols' => sprintf( __( 'Min %s symbols', 'hg_login' ), HG_Login()->settings->password_min_length ),
+            'maxSymbols' => sprintf( __( 'Max %s symbols', 'hg_login' ), HG_Login()->settings->password_max_length ),
+            'onlyLatinAndNumbers' => __('Only latin letters and numbers are allowed!','hg_login'),
+            'noWhiteSpaces' => __('Whitespaces are not allowed!','hg_login')
         ));
 
         wp_enqueue_script( 'hg_login_popup_forgotpass_js', HG_Login()->plugin_url().'/assets/js/popup-forgot-password.js',array(),false,true );
@@ -80,8 +84,12 @@ class HG_Login_Frontend_Scripts {
             'passwordsDoNotMatch' => __( "Passwords do not match", "hg_login" ),
             'nonce' => wp_create_nonce('hg_login_resetpass'),
             'passTooWeak' => __('Password is too weak','hg_login'),
-            'min7symbols' => __( 'Min 7 symbols', 'hg_login' ),
-            'onlyLatinAndNumbers' => __('Only latin letters and numbers are allowed!','hg_login')
+            'passwordMinLength' => HG_Login()->settings->password_min_length,
+            'passwordMaxLength' => HG_Login()->settings->password_max_length,
+            'minSymbols' => sprintf( __( 'Min %s symbols', 'hg_login' ), HG_Login()->settings->password_min_length ),
+            'maxSymbols' => sprintf( __( 'Max %s symbols', 'hg_login' ), HG_Login()->settings->password_max_length ),
+            'onlyLatinAndNumbers' => __('Only latin letters and numbers are allowed!','hg_login'),
+            'noWhiteSpaces' => __('Whitespaces are not allowed!','hg_login')
         ));
 
         wp_enqueue_script( 'zxcvbn-async',array( 'jquery' ),false,true );

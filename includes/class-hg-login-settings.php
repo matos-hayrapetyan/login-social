@@ -72,11 +72,18 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 		$this->admin_email                      = $this->get_option( "admin_email", get_option( "admin_email" ) );
 		$this->email_notify_admin               = $this->get_option( "email_notify_admin", 'yes' );
 		$this->accept_weak_password             = $this->get_option( "accept_weak_password", "no" );
+        $this->password_min_length              = $this->get_option( "password_min_length", "7" );
+        $this->password_max_length              = $this->get_option( "password_max_length", "25" );
 		$this->redirect_from_loginscreen        = $this->get_option( "redirect_from_loginscreen", "no" );
 
-		$this->disable_default_css = $this->get_option( 'disable_default_css', 'no' );
-		$this->custom_css          = $this->get_option( "custom_css", '' );
+		$this->disable_default_css              = $this->get_option( 'disable_default_css', 'no' );
+		$this->custom_css                       = $this->get_option( "custom_css", '' );
 
+        $this->popup_border_radius = $this->get_option( "popup_border_radius", "2" );
+        $this->popup_border_width = $this->get_option( "popup_border_width", "0" );
+        $this->popup_border_style = $this->get_option( "popup_border_style", "solid" );
+        $this->popup_border_color = $this->get_option( "popup_border_color", "solid" );
+        $this->popup_border_opacity = $this->get_option( "popup_border_opacity", "1" );
 		$this->popup_bg_color                   = $this->get_option( "popup_bg_color", 'FFFFFF' );
 		$this->popup_footer_bg_color            = $this->get_option( "popup_footer_bg_color", 'FFFFFF' );
 		$this->popup_footer_text_color          = $this->get_option( "popup_footer_text_color", '333333' );
@@ -90,6 +97,7 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 		$this->popup_input_label_color          = $this->get_option( "popup_input_label_color", '999999' );
 		$this->popup_input_focused_text_color   = $this->get_option( "popup_input_focused_text_color", '999999' );
 		$this->popup_input_focused_bg_color     = $this->get_option( "popup_input_focused_bg_color", 'FFFFFF' );
+        $this->popup_input_focused_border_color = $this->get_option("popup_input_focused_border_color", '3F51B5' );
 		$this->popup_input_focused_label_color  = $this->get_option( "popup_input_focused_label_color", '444444' );
 		$this->popup_input_error_color          = $this->get_option( "popup_input_error_color", 'E53935' );
 		$this->popup_primary_btn_color          = $this->get_option( "popup_primary_btn_color", 'FFFFFF' );
@@ -99,17 +107,17 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 		$this->popup_secondary_btn_color        = $this->get_option( "popup_secondary_btn_color", '666666' );
 		$this->popup_secondary_btn_hover_color  = $this->get_option( "popup_secondary_btn_hover_color", '808080' );
 
-		$this->login_btn_bg_color         = $this->get_option( "login_btn_bg_color", '106cc8' );
-		$this->login_btn_hover_bg_color   = $this->get_option( "login_btn_hover_bg_color", '0159a2' );
-		$this->login_btn_text_color       = $this->get_option( "login_btn_text_color", 'ffffff' );
-		$this->login_btn_hover_text_color = $this->get_option( "login_btn_hover_text_color", 'ffffff' );
-		$this->login_btn_text_size        = $this->get_option( "login_btn_text_size", '14' );
+		$this->login_btn_bg_color               = $this->get_option( "login_btn_bg_color", '106cc8' );
+		$this->login_btn_hover_bg_color         = $this->get_option( "login_btn_hover_bg_color", '0159a2' );
+		$this->login_btn_text_color             = $this->get_option( "login_btn_text_color", 'ffffff' );
+		$this->login_btn_hover_text_color       = $this->get_option( "login_btn_hover_text_color", 'ffffff' );
+		$this->login_btn_text_size              = $this->get_option( "login_btn_text_size", '14' );
 
-		$this->signup_btn_bg_color         = $this->get_option( "signup_btn_bg_color", '106cc8' );
-		$this->signup_btn_hover_bg_color   = $this->get_option( "signup_btn_hover_bg_color", '0159a2' );
-		$this->signup_btn_text_color       = $this->get_option( "signup_btn_text_color", 'ffffff' );
-		$this->signup_btn_hover_text_color = $this->get_option( "signup_btn_hover_text_color", 'ffffff' );
-		$this->signup_btn_text_size        = $this->get_option( "signup_btn_text_size", '14' );
+		$this->signup_btn_bg_color               = $this->get_option( "signup_btn_bg_color", '106cc8' );
+		$this->signup_btn_hover_bg_color         = $this->get_option( "signup_btn_hover_bg_color", '0159a2' );
+		$this->signup_btn_text_color             = $this->get_option( "signup_btn_text_color", 'ffffff' );
+		$this->signup_btn_hover_text_color       = $this->get_option( "signup_btn_hover_text_color", 'ffffff' );
+		$this->signup_btn_text_size              = $this->get_option( "signup_btn_text_size", '14' );
 
 		$this->facebook_app_id     = $this->get_option( "facebook_app_id", "" );
 		$this->facebook_app_secret = $this->get_option( "facebook_app_secret", "" );
@@ -178,36 +186,66 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 				'panel' => 'design',
 				'title' => __( 'Styling', 'hg_login' ),
 			),
-			'popup_styles'       => array(
-				'panel'                => 'design',
-				'title'                => __( 'Popup Styles', 'hg_login' ),
-				'disabled'             => true,
-				'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
-				'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
-				'disabled_link'        => 'http://huge-it.com/wordpress-login',
-				'disabled_bg_color'    => '#b21919',
-				'disabled_color'       => '#fff',
-			),
-			'login_btn_styles'   => array(
-				'panel'                => 'design',
-				'title'                => __( 'Login Button Styles', 'hg_login' ),
-				'disabled'             => true,
-				'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
-				'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
-				'disabled_link'        => 'http://huge-it.com/wordpress-login',
-				'disabled_bg_color'    => '#b21919',
-				'disabled_color'       => '#fff',
-			),
-			'signup_btn_styles'  => array(
-				'panel'                => 'design',
-				'title'                => __( 'Signup Button Styles', 'hg_login' ),
-				'disabled'             => true,
-				'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
-				'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
-				'disabled_link'        => 'http://huge-it.com/wordpress-login',
-				'disabled_bg_color'    => '#b21919',
-				'disabled_color'       => '#fff',
-			),
+            'login_btn_styles'   => array(
+                'panel'                => 'design',
+                'title'                => __( 'Login Button Styles', 'hg_login' ),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
+            'signup_btn_styles'  => array(
+                'panel'                => 'design',
+                'title'                => __( 'Signup Button Styles', 'hg_login' ),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
+            'popup_border_styles' => array(
+                'panel' => 'design',
+                'title' => __( 'Popup Border Styles', 'hg_login' ),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
+            'popup_container_styles' => array(
+                'panel' => 'design',
+                'title' => __( 'Popup Container Styles', 'hg_login' ),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
+            'popup_text_styles' => array(
+                'panel' => 'design',
+                'title' => __( 'Popup Text Styles', 'hg_login' ),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
+            'popup_button_styles' => array(
+                'panel' => 'design',
+                'title' => __('Popup Button Styles','hg_login'),
+                'disabled'             => true,
+                'disabled_description' => __( 'This section is available only for pro users.</br>Please, upgrade your profile.', 'hg_login' ),
+                'disabled_button_text' => __( 'Go to Pro', 'hg_login' ),
+                'disabled_link'        => 'http://huge-it.com/wordpress-login',
+                'disabled_bg_color'    => '#b21919',
+                'disabled_color'       => '#fff',
+            ),
 			'facebook_options'   => array(
 				'panel' => 'social',
 				'title' => __( 'Facebook', 'hg_login' )
@@ -305,6 +343,18 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 				'default' => $this->accept_weak_password,
 				'label'   => __( 'Accept weak password', 'hg_login' )
 			),
+            'password_min_length' => array(
+                'section' => 'signup_options',
+                'type' => 'number',
+                'default' => $this->password_min_length,
+                'label' => __('Minimum length of password','hg_login'),
+            ),
+            'password_max_length' => array(
+                'section' => 'signup_options',
+                'type' => 'number',
+                'default' => $this->password_max_length,
+                'label' => __('Maximum length of password','hg_login')
+            ),
 			'signup_button_text'    => array(
 				'section' => 'signup_options',
 				'type'    => 'text',
@@ -406,151 +456,190 @@ class HG_Login_Settings extends WPDEV_Settings_API {
 		);
 	}
 
-	private function get_popup_styles_controls() {
-		return array(
-			'popup_bg_color'                   => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_bg_color,
-				'label'      => __( 'Background color', 'hg_login' )
-			),
-			'popup_footer_bg_color'            => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_footer_bg_color,
-				'label'      => __( 'Footer Background color', 'hg_login' )
-			),
-			'popup_footer_text_color'          => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_footer_text_color,
-				'label'   => __( 'Footer Text Color', 'hg_login' )
-			),
-			'popup_header_bg_color'            => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_header_bg_color,
-				'label'      => __( 'Header background', 'hg_login' )
-			),
-			'popup_header_text_color'          => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_header_text_color,
-				'label'      => __( 'Header text color', 'hg_login' )
-			),
-			'popup_close_btn_color'            => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_close_btn_color,
-				'label'      => __( 'Close Button Color', 'hg_login' )
-			),
-			'popup_fb_btn_bg_color'            => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_fb_btn_bg_color,
-				'label'      => __( 'Facebook Button Background', 'hg_login' )
-			),
-			'popup_fb_btn_text_color'          => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_fb_btn_text_color,
-				'label'      => __( 'Facebook Button Text Color', 'hg_login' )
-			),
-			'popup_input_text_color'           => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_input_text_color,
-				'label'   => __( 'Text Field Text Color', 'hg_login' )
-			),
-			'popup_input_bg_color'             => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_input_bg_color,
-				'label'      => __( 'Text field background Color', 'hg_login' )
-			),
-			'popup_input_label_color'          => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_input_label_color,
-				'label'      => __( 'Text Field Label Color', 'hg_login' )
-			),
-			'popup_input_focused_text_color'   => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_input_focused_text_color,
-				'label'   => __( 'Text Field Focused Text Color', 'hg_login' )
-			),
-			'popup_input_focused_label_color'  => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_input_focused_label_color,
-				'label'      => __( 'Text Field Focused Label Color', 'hg_login' )
-			),
-			'popup_input_focused_bg_color'     => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_input_focused_bg_color,
-				'label'   => __( 'Text Field Focused Background Color', 'hg_login' )
-			),
-			'popup_input_error_color'          => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_input_error_color,
-				'label'      => __( 'Text Field Error Color', 'hg_login' )
-			),
-			'popup_primary_btn_color'          => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_primary_btn_color,
-				'label'      => __( 'Primary Button Color', 'hg_login' )
-			),
-			'popup_primary_btn_bg_color'       => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_primary_btn_bg_color,
-				'label'   => __( 'Primary Button Background Color', 'hg_login' )
-			),
-			'popup_primary_btn_hover_color'    => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_primary_btn_hover_color,
-				'label'      => __( 'Primary Button Hover Color', 'hg_login' )
-			),
-			'popup_primary_btn_hover_bg_color' => array(
-				'section' => 'popup_styles',
-				'type'    => 'color',
-				'default' => $this->popup_primary_btn_hover_bg_color,
-				'label'   => __( 'Primary Button Hover Background Color', 'hg_login' )
-			),
-			'popup_secondary_btn_color'        => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_secondary_btn_color,
-				'label'      => __( 'Secondary Button Color', 'hg_login' )
-			),
-			'popup_secondary_btn_hover_color'  => array(
-				'section'    => 'popup_styles',
-				'type'       => 'text',
-				'html_class' => array( 'jscolor' ),
-				'default'    => $this->popup_secondary_btn_hover_color,
-				'label'      => __( 'Secondary Button Hover Color', 'hg_login' )
-			),
-		);
-	}
+    private function get_popup_styles_controls(){
+        return array(
+            'popup_border_radius' => array(
+                'section' => 'popup_border_styles',
+                'type' => 'simple_slider',
+                'default' => $this->popup_border_radius,
+                'label' => __('Border Radius(px)','hg_login'),
+                'choices' => range( 0, 50 )
+            ),
+            'popup_border_width' => array(
+                'section' => 'popup_border_styles',
+                'type' => 'simple_slider',
+                'default' => $this->popup_border_width,
+                'label' => __('Border Width(px)','hg_login'),
+                'choices' => range( 0, 50 )
+            ),
+            'popup_border_style' => array(
+                'section' => 'popup_border_styles',
+                'type' => 'select',
+                'default' => $this->popup_border_style,
+                'label' => __('Border Style','hg_login'),
+                'choices' => array(
+                    'dotted' => 'dotted',
+                    'dashed' => 'dashed',
+                    'solid' => 'solid',
+                    'double' => 'double',
+                    'groove' => 'groove',
+                    'ridge' => 'ridge',
+                    'inset' => 'inset',
+                    'outset' => 'outset',
+                    'none' => 'none',
+                    'hidden' => 'hidden',
+                )
+            ),
+            'popup_border_color' => array(
+                'section' => 'popup_border_styles',
+                'type' => 'color',
+                'default' => $this->popup_border_color,
+                'label' => __('Border Color','hg_login')
+            ),
+            'popup_border_opacity' => array(
+                'section' => 'popup_border_styles',
+                'type' => 'simple_slider',
+                'default' => $this->popup_border_opacity,
+                'label' => __('Border Opacity','hg_login'),
+                'choices' => array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 )
+            ),
+            'popup_bg_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_bg_color,
+                'label' => __('Background Color','hg_login')
+            ),
+            'popup_footer_bg_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_footer_bg_color,
+                'label' => __('Footer Background Color','hg_login')
+            ),
+            'popup_footer_text_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_footer_text_color,
+                'label' => __('Footer Text Color','hg_login')
+            ),
+            'popup_header_bg_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_header_bg_color,
+                'label' => __('Header Background','hg_login')
+            ),
+            'popup_header_text_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_header_text_color,
+                'label' => __('Header Text Color','hg_login')
+            ),
+            'popup_close_btn_color' => array(
+                'section' => 'popup_container_styles',
+                'type' => 'color',
+                'default' => $this->popup_close_btn_color,
+                'label' => __('Close Button Color','hg_login')
+            ),
+            'popup_fb_btn_bg_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_fb_btn_bg_color,
+                'label' => __('Facebook Button Background','hg_login')
+            ),
+            'popup_fb_btn_text_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_fb_btn_text_color,
+                'label' => __('Facebook Button Text Color','hg_login')
+            ),
+            'popup_input_text_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_text_color,
+                'label' => __('Text Field Text Color','hg_login')
+            ),
+            'popup_input_focused_text_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_focused_text_color,
+                'label' => __('Text Field Focused Text Color','hg_login')
+            ),
+            'popup_input_bg_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_bg_color,
+                'label' => __('Text Field Background Color','hg_login')
+            ),
+            'popup_input_focused_bg_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_focused_bg_color,
+                'label' => __('Text Field Focused Background Color','hg_login')
+            ),
+            'popup_input_label_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_label_color,
+                'label' => __('Text Field Label Color','hg_login')
+            ),
+            'popup_input_focused_label_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_focused_label_color,
+                'label' => __('Text Field Focused Label Color','hg_login')
+            ),
+            'popup_input_focused_border_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'color',
+                'default' => $this->popup_input_focused_border_color,
+                'label' => __('Text Field Focused Border Color','hg_login')
+            ),
+            'popup_input_error_color' => array(
+                'section' => 'popup_text_styles',
+                'type' => 'text',
+                'html_class' => array('jscolor'),
+                'default' => $this->popup_input_error_color,
+                'label' => __('Text Field Error Color','hg_login')
+            ),
+            'popup_primary_btn_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_primary_btn_color,
+                'label' => __('Primary Button Color','hg_login')
+            ),
+            'popup_primary_btn_bg_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_primary_btn_bg_color,
+                'label' => __('Primary Button Background Color','hg_login')
+            ),
+            'popup_primary_btn_hover_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_primary_btn_hover_color,
+                'label' => __('Primary Button Hover Color','hg_login')
+            ),
+            'popup_primary_btn_hover_bg_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'color',
+                'default' => $this->popup_primary_btn_hover_bg_color,
+                'label' => __('Primary Button Hover Background Color','hg_login')
+            ),
+            'popup_secondary_btn_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'text',
+                'html_class' => array('jscolor'),
+                'default' => $this->popup_secondary_btn_color,
+                'label' => __('Secondary Button Color','hg_login')
+            ),
+            'popup_secondary_btn_hover_color' => array(
+                'section' => 'popup_button_styles',
+                'type' => 'text',
+                'html_class' => array('jscolor'),
+                'default' => $this->popup_secondary_btn_hover_color,
+                'label' => __('Secondary Button Hover Color','hg_login')
+            ),
+        );
+    }
 
 	private function get_login_btn_styles_controls() {
 		return array(

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-add_action( 'hg_login_register_new_user', 'hg_login_new_user_notifications' );
+add_action( 'hg_login_register_new_user', 'hg_login_new_user_notifications', 10, 2 );
 
 add_action( 'login_form_hg_login_activate_acc', 'hg_login_user_activation' );
 

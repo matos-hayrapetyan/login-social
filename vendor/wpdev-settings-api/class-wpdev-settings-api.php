@@ -307,6 +307,67 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
         }
 
         /**
+         * Category dropdown
+         *
+         * @param $id
+         * @param $control
+         */
+        protected function control_category_dropdown( $id, $control ){
+            if( !isset( $control['category_args'] ) ) {
+                $control['category_args'] = array();
+            }
+
+            $args = array(
+                'type'         => 'post',
+                'child_of'     => 0,
+                'orderby'      => 'name',
+                'order'        => 'ASC',
+                'hide_empty'   => 0,
+                'hierarchical' => 1,
+                'taxonomy'     => 'category',
+                'pad_counts'   => false
+            );
+            $cats = get_categories( $args );
+
+            $control['choices'] = array();
+            foreach( $cats as $cat ){
+                $control['choices'][ $cat->term_id ] = $cat->name;
+            }
+            $this->control_select( $id, $control );
+        }
+
+        /**
+         * Pages dropdown
+         *
+         * @param $id
+         * @param $control
+         */
+        protected function control_page_dropdown( $id, $control ){
+            if( !isset( $control['page_args'] ) ) {
+                $control['page_args'] = array();
+            }
+
+            $args = wp_parse_args($control['page_args'],array(
+                'sort_order'   => 'asc',
+                'sort_column'  => 'post_title',
+                'hierarchical' => 1,
+                'child_of'     => 0,
+                'parent'       => - 1,
+                'offset'       => 0,
+                'post_type'    => 'page',
+                'post_status'  => 'publish'
+            ));
+            $pages      = get_pages( $args );
+            $control['choices'] = array();
+            foreach( $pages as $page ){
+                $control['choices'][ $page->ID ] = $page->post_title;
+            }
+
+            $this->control_select( $id, $control );
+
+        }
+
+        /**
          * JScolor
          *
          * @param $id
@@ -673,7 +734,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
             $disabled = isset( $section['disabled'] );
 
             if( $disabled ){
-                $disabled_class = apply_filters( 'wpdev_settings_disabled_section_class', 'wpdev-disabled' );
+                $disabled_class = apply_filters( 'wpdev_settings_disabled_section_class', 'wpdev-disabled-section' );
             }else{
                 $disabled_class='';
             }
@@ -688,7 +749,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
             foreach ( $this->controls as $control_id => $control ) {
                 if ( $control['section'] == $section_id ) {
 
-                    if( $disabled ){
+                    if( $disabled || isset( $section['disabled_panel'] ) ){
                         if( isset( $control['html_class'] ) && is_string( $control['html_class'] ) ){
                             $control['html_class'] .= ' --disabled';
                         }elseif( isset( $control['html_class'] ) && is_array( $control['html_class'] ) ){
@@ -703,7 +764,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
             }
             if($disabled){
                 $disabled_description = isset( $section['disabled_description'] ) ? $section['disabled_description'] : 'This section is disabled for current version of plugin';
-                $disabled_button_text = isset( $section['disabled_button_text'] ) ? $section['disabled_button_text'] : '';
+                $disabled_button_text = isset( $section['disabled_button_text'] ) ? $section['disabled_button_text'] : 'Get Full Version';
                 $disabled_link = isset( $section['disabled_link'] ) ? $section['disabled_link'] : '#';
                 $disabled_bg_color = isset( $section['disabled_bg_color'] ) ? $section['disabled_bg_color'] : '#b21919';
                 $disabled_color = isset( $section['disabled_color'] ) ? $section['disabled_color'] : '#fff';
@@ -714,6 +775,47 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
                 echo '</div>';
             }
             echo '</div>';
+        }
+
+        /**
+         * @param $panel_id
+         * @param $panel
+         */
+        protected function single_panel( $panel_id, $panel ){
+            $disabled = isset( $panel['disabled'] );
+
+            if( $disabled ){
+                $disabled_class = apply_filters( 'wpdev_settings_disabled_panel_class', 'wpdev-disabled-panel' );
+            }else{
+                $disabled_class='';
+            }
+
+            echo '<section id="' . $panel_id . '" class="'.$disabled_class.' wpdev_settings' . ( count($this->panels)>1 ? '_hidden' : '' ) . '_section ' . ( count($this->panels)>1 && $panel == reset( $this->panels ) ? 'active' : '' ) . '"" >';
+            foreach ( $this->sections as $section_id => $section ) {
+                if ( isset( $section['panel'] ) && $section['panel'] != $panel_id ) {
+                    continue;
+                }
+
+                if( $disabled ){
+                    $section['disabled_panel'] = true;
+                }
+
+                $this->single_section( $section_id, $section );
+
+            }
+            if($disabled){
+                $disabled_description = isset( $panel['disabled_description'] ) ? $panel['disabled_description'] : 'This section is disabled for current version of plugin';
+                $disabled_button_text = isset( $panel['disabled_button_text'] ) ? $panel['disabled_button_text'] : 'Get Full Version';
+                $disabled_link = isset( $panel['disabled_link'] ) ? $panel['disabled_link'] : '#';
+                $disabled_bg_color = isset( $panel['disabled_bg_color'] ) ? $panel['disabled_bg_color'] : '#b21919';
+                $disabled_color = isset( $panel['disabled_color'] ) ? $panel['disabled_color'] : '#fff';
+
+                echo '<div class="wpdev-settings-disabled-container">';
+                echo '<div class="--description">'.$disabled_description.'</div>';
+                echo '<a style="color:'.$disabled_color.';background-color:'.$disabled_bg_color.'" href="'.$disabled_link.'" target="_blank">'.$disabled_button_text.'</a>';
+                echo '</div>';
+            }
+            echo '</section>';
         }
 
         protected function display(){
@@ -739,16 +841,7 @@ if( !class_exists( 'WPDEV_Settings_API' ) ):
                         }
 
                         foreach ( $this->panels as $panel_id => $panel ) {
-                            echo '<section id="' . $panel_id . '" class="wpdev_settings' . ( count($this->panels)>1 ? '_hidden' : '' ) . '_section ' . ( count($this->panels)>1 && $panel == reset( $this->panels ) ? 'active' : '' ) . '"" >';
-                            foreach ( $this->sections as $section_id => $section ) {
-                                if ( isset( $section['panel'] ) && $section['panel'] != $panel_id ) {
-                                    continue;
-                                }
-
-                                $this->single_section( $section_id, $section );
-
-                            }
-                            echo '</section>';
+                            $this->single_panel( $panel_id, $panel );
                         }
                         ?>
                         <div class="wpdev-settins-submit-block">

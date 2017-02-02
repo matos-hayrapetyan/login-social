@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php if( get_option( 'users_can_register' ) ): ?>
         <div class="hg-login-modal-footer">
             <div class="-layout -flex -center">
-                <span><?php _e( 'Don\' you have an account yet?', 'hg_login' ); ?></span>
+                <span><?php _e( 'Don\'t you have an account yet?', 'hg_login' ); ?></span>
                 <div id="hg-login-button-open-signup-popup" class="-button -size-24 -view-flat hg_login_open_signup_button">
                     <div class="button--content"><?php _e( "Sign up now!", "hg_login" ); ?></div>
                 </div>

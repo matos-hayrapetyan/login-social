@@ -164,7 +164,8 @@
 .wpdev-settings-section input[type="text"],
 .wpdev-settings-section input[type="time"],
 .wpdev-settings-section input[type="url"],
-.wpdev-settings-section input[type="week"] {
+.wpdev-settings-section input[type="week"],
+.wpdev-settings-section select {
     width: 40%;
     height: 36px;
     border: 1px solid #c4c4c4;
@@ -517,27 +518,37 @@
     margin:0;
     text-indent: 0;
 }
-.wpdev-settings-section.wpdev-settings-disabled {
-
-}
 .wpdev-settings-disabled-container {
     position:absolute;
     top:0;
     right:0;
     bottom:0;
     left:0;
-    background-color:rgba(255,255,255,.9);
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     text-align: center;
 }
+
+.wpdev-disabled-section > .wpdev-settings-disabled-container {
+    background-color:rgba(255,255,255,.9);
+    justify-content: center;
+}
+
+.wpdev-disabled-panel > .wpdev-settings-disabled-container {
+    background-color:rgba(255,255,255,.8);
+}
+
 .wpdev-settings-disabled-container .--description {
     font-size: 18px;
     color: #1b1a1a;
     font-family: 'Open Sans', sans-serif;
 }
+
+.wpdev-disabled-panel > .wpdev-settings-disabled-container .--description {
+    margin-top: 20vh;
+}
+
 .wpdev-settings-disabled-container a,
 .wpdev-settings-disabled-container a:link,
 .wpdev-settings-disabled-container a:visited {
@@ -555,6 +566,10 @@
 .wpdev-settings-disabled-container a:hover {
     text-shadow: 0 0 5px rgba(255,255,255,.5);
     text-decoration: none;
+}
+
+.wpdev-disabled-panel {
+
 }
 @media screen and (max-width:720px){
     .wpdev-settings-section {

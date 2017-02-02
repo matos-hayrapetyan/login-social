@@ -16,7 +16,7 @@
                         <p><?php _e('Copy & paste the shortcode directly into any WordPress post or page', 'hg_login' ); ?></p>
                         <p><code>[hg-login-button text="Login" show_menu="yes"]</code></p>
                         <p><?php _e( 'Or copy & paste this code into a template file', 'hg_login' ); ?></p>
-                        <p><code>&lt;&#63;php echo do_shortcode("[hg-login-button text="Login" show_menu="yes"]"); &#63;&gt;</code></p>
+                        <p><code>&lt;&#63;php echo do_shortcode('[hg-login-button text="Login" show_menu="yes"]'); &#63;&gt;</code></p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                         <p><?php _e('Copy & paste the shortcode directly into any WordPress post or page', 'hg_login' ); ?></p>
                         <p><code>[hg-signup-button text="Sign up" show_menu="yes"]</code></p>
                         <p><?php _e( 'Or copy & paste this code into a template file', 'hg_login' ); ?></p>
-                        <p><code>&lt;&#63;php echo do_shortcode("[hg-signup-button text="Sign up" show_menu="yes"]"); &#63;&gt;</code></p>
+                        <p><code>&lt;&#63;php echo do_shortcode('[hg-signup-button text="Sign up" show_menu="yes"]'); &#63;&gt;</code></p>
                     </div>
                 </div>
             </div>

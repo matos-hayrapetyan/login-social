@@ -65,20 +65,20 @@ function hgLoginPopupSignup( wrap ){
 
                 _this.wrap.append(
                     '<div id="hg_login_primary_form_popup">' +
-                        '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-signup">' +
-                            '<div class="hg-login-modal-fit center-center hg-login-layout">' +
-                                '<div class="hg-login-modal-container">' +
-                                    '<div class="hg-login-popup-spinner-flex">' +
-                                        '<div class="hg-login-popup-spinner">' +
-                                            '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
-                                            '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
+                    '<div class="hg-login-modal hg-login-modal-overlay hg-login-modal-signup">' +
+                    '<div class="hg-login-modal-fit center-center hg-login-layout">' +
+                    '<div class="hg-login-modal-container">' +
+                    '<div class="hg-login-popup-spinner-flex">' +
+                    '<div class="hg-login-popup-spinner">' +
+                    '<div class="hg-login-popup-spin hg-spinner-1"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-2"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-3"></div>' +
+                    '<div class="hg-login-popup-spin hg-spinner-4"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
                     '</div>' );
 
 
@@ -112,11 +112,6 @@ function hgLoginPopupSignup( wrap ){
             newsletter = _this.newsletterInput.is(":checked");
         }
 
-        if( _this.acceptWeakPass && pass.length < 7 ){
-            _this.isInvalid( _this.passInput, hgSignupPopupL10n.min7symbols );
-            valid = false;
-        }
-
         if( pass == "" ){
             _this.isInvalid( _this.passInput, hgSignupPopupL10n.requiredField );
             valid = false;
@@ -142,13 +137,36 @@ function hgLoginPopupSignup( wrap ){
 
         if( _this.container.find("input.invalid").length ) valid = false;
 
-        if( _this.passStrength <= 2 && !_this.acceptWeakPass ){
+        /**
+         * check password against whitespaces
+         */
+        var invalidPass = /\s/g.test(pass );
+
+        if( invalidPass ){
+            _this.isInvalid( _this.passInput, hgSignupPopupL10n.noWhiteSpaces );
+            valid = false;
+        }else if( _this.passStrength <= 2 && !_this.acceptWeakPass ){
+            /**
+             * Password weakness
+             */
             hg_login.showPopupInfo('-error', hgSignupPopupL10n.passTooWeak);
+            valid = false;
+        }else if( pass.length < hgSignupPopupL10n.passwordMinLength ){
+            /**
+             * Check against minimum allowed length
+             */
+            _this.isInvalid( _this.passInput, hgSignupPopupL10n.minSymbols );
+            valid = false;
+        }else if( pass.length > hgSignupPopupL10n.passwordMaxLength ){
+            /**
+             * Check against maximum allowed length
+             */
+            _this.isInvalid( _this.passInput, hgSignupPopupL10n.maxSymbols );
             valid = false;
         }
 
         if(_this.enableRecaptcha){
-            var recaptcha_response =grecaptcha.getResponse(_this.recpatchaWidgetID);
+            var recaptcha_response = grecaptcha.getResponse(_this.recpatchaWidgetID);
             if(recaptcha_response == ''){
                 hg_login.showPopupInfo( '-error', hgSignupPopupL10n.recaptchaErrorMsg );
                 valid = false;

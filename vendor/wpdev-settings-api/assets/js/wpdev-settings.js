@@ -42,6 +42,14 @@ function WPDEV_Settings(){
         window.location.hash = active;
         _this.container.find( "#" + active ).addClass("active");
         _this.masonry.masonry();
+        _this.container.find( '[data-slider]' ).each(function(){
+            try {
+
+                jQuery(this).simpleSlider("setValue", jQuery(this).val());
+
+            } catch (err) {}
+
+        });
     };
 
     _this.changeNav = function(){
